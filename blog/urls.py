@@ -5,5 +5,5 @@ from django.urls import path
 # app_name = 'blog'
 
 urlpatterns = [
-    path('', views.HomePageView.as_view(), name='home'),
+    path('', views.RecipeList.as_view(), name='home'),
 ]
