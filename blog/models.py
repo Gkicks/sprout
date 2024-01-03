@@ -4,8 +4,8 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
-CATEGORY = ((0, 'breakfast'), (1, 'starter'), (2, 'main'),
-            (3, 'snack'), (4, 'side'), (5, 'dessert'), (6, 'drink'))
+CATEGORY = ((0, 'Breakfast'), (1, 'Starter'), (2, 'Main'),
+            (3, 'Snack'), (4, 'Side'), (5, 'Dessert'), (6, 'Drink'))
 
 
 class Recipe(models.Model):
