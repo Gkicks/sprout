@@ -16,7 +16,7 @@ class Recipe(models.Model):
     featured_image = CloudinaryField('image', default='placeholder')
     category = models.IntegerField(choices=CATEGORY, default=2)
     content = models.TextField(blank=True)
-    ingregdients = models.TextField(blank=False)
+    ingredients = models.TextField(blank=False)
     method = models.TextField(blank=False)
     servings = models.IntegerField(blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
