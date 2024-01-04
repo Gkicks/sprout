@@ -1,3 +1,26 @@
+.hero-image {
+    background-image: url("../images/hero-image.jpg");
+    width: 100%;
+    background-size: cover;
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    position: relative
+}
+
+.hero-blurb {
+    background-color: #fceee9;
+    text-align: center;
+    color: #f8d3c5;
+    border-radius: 0.25rem;
+    position: absolute;
+    width: 25%;
+    height: 50%;
+    left: 37.5%;
+    top: 25%;
+}
+
 .card-footer {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
