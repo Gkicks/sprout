@@ -12,11 +12,19 @@
                 Category: {{ recipe.get_category_display }}
               </p>
               <div class="image-container">
+                {% if "placeholder" in recipe.featured_image %}
                 <img
                   class="card-img"
                   src="{% static 'images/sprout-favicon.jpg' %}"
                   alt="placeholder image"
                 />
+                {% else %}
+                <img
+                  class="card-img"
+                  src="{{ recipe.featured_image.url }}"
+                  alt="{{ recipe.recipe_name }}"
+                />
+                {% endif %}
               </div>
 
               <div class="card-title text-center">
