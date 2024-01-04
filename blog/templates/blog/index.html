@@ -1,26 +1,39 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- index.html content starts here -->
 <div class="container-fluid">
-  <div class="row">
-    {% for recipe in recipe_list %}
-    <div class="col-12 col-md-4 col-lg-3 card">
-      <div class="card-title">
-        <h2>{{ recipe.recipe_name }}</h2>
+  <div class="col-12 mt-3 mb-3">
+    <div class="row">
+      {% for recipe in recipe_list %}
+      <div class="col-md-4 col-lg-3 mt-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <div>
+              <p class="card-footer text-center">
+                Category: {{ recipe.get_category_display }}
+              </p>
+              <div class="image-container">
+                <img
+                  class="card-img"
+                  src="{% static 'images/sprout-favicon.jpg' %}"
+                  alt="placeholder image"
+                />
+              </div>
+
+              <div class="card-title text-center">
+                <h2>{{ recipe.recipe_name }}</h2>
+              </div>
+
+              <!-- <div class="card-body"> -->
+
+              <!-- <p>Author: {{ recipe.author }}</p> -->
+              <!-- <hr /> -->
+              <!-- <p class="muted">Date Created: {{ recipe.created_on }}</p> -->
+            </div>
+          </div>
+        </div>
       </div>
-      <img
-        src="{% static 'images/sprout-favicon.jpg' %}"
-        width="30%"
-        alt="placeholder image"
-      />
-      <div class="card-body">
-        <h3>Category: {{ recipe.get_category_display }}</h3>
-        <hr />
-        <p>Author: {{ recipe.author }}</p>
-        <hr />
-        <p class="muted">Date Created: {{ recipe.created_on }}</p>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 {% endblock %}
