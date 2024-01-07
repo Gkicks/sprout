@@ -32,3 +32,13 @@ class Recipe(models.Model):
 
     def __str__(self):
         return self.recipe_name
+
+
+class Comment(models.Model):
+    recipe = models.ForeignKey(
+        Recipe, on_delete=models.CASCADE, related_name='comments')
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name='commentor')
+    body = models.TextField(blank=False)
+    approved = models.BooleanField(default=False)
+    created_on = models.DateTimeField(auto_now_add=True)
