@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic
-from .models import Recipe
-from .forms import RecipeForm
+from .models import Recipe, Comment
+from .forms import RecipeForm, CommentForm
 
 # Create your views here.
 
@@ -27,3 +27,17 @@ def recipe_detail(request, slug):
             "comment_count": comment_count,
         },
     )
+
+
+def add_recipe(request):
+    recipe_form = RecipeForm
+    if request.method == 'POST':
+        context = {
+            'recipe_form': recipe_form,
+        }
+    return render(
+        request,
+        'blog/add_recipe.html',
+        {
+            "recipe_form": recipe_form,
+        })

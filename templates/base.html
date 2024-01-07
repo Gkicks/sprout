@@ -1,5 +1,6 @@
 {% load static %}
 {% url 'home' as home_url %}
+{% url 'add_recipe' as add_recipe_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
 {% url 'account_logout' as logout_url %}
@@ -62,7 +63,7 @@
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link px-lg-3 py-3 py-lg-4" aria-current="page" href="#">Add Recipe</a>
+                <a class="nav-link px-lg-3 py-3 py-lg-4 {% if request.path == add_recipe_url %}active{% endif %}" aria-current="page" href="{% url 'add_recipe' %}">Add Recipe</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link px-lg-3 py-3 py-lg-4 {% if request.path == logout_url %}active{% endif %}" aria-current="page"
