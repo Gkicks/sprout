@@ -20,5 +20,23 @@
 <div>
     {{ recipe.servings }}
 </div>
+<div>
+    <h3>Comments: </h3>
+</div>
+<div>
+    {% for comment in comments %}
+    <div class="comment-list">
+        {% if not comment.approved and not comment.author == user %}
+        <p></p>
+        {% elif not comment.approved and comment.author == user %}
+        <p><em>Comment awaiting admin approval: </em><br><span class="faded">{{ comment }} <br> by {{ comment.author }} on {{ comment.created_on }}</p>
+        {% else %}
+        <p>{{ comment }} <br> by {{ comment.author }} on {{ comment.created_on }}</p>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+</div>
+
 
 {% endblock content %}
