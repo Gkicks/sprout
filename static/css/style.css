@@ -1,3 +1,7 @@
+#logo {
+    color: #667b68;
+}
+
 .hero-image {
     background-image: url("../images/hero-image.jpg");
     width: 100%;
