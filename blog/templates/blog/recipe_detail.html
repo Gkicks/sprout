@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+<div class="image-container">
+    {% if "placeholder" in recipe.featured_image %}
+    <img class="card-img" src="{% static 'images/sprout-favicon.jpg' %}" alt="placeholder image" />
+    {% else %}
+    <img class="card-img" src="{{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name }}" />
+    {% endif %}
+</div>
+<div>
+                <h2>{{ recipe.recipe_name }}</h2>
+</div>
+<div>
+    {{ recipe.ingredients }}
+</div>
+<div>
+    {{ recipe.method }}
+</div>
+<div>
+    {{ recipe.servings }}
+</div>
+
+{% endblock content %}
