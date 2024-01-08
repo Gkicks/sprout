@@ -1,16 +1,12 @@
-{% extends 'base.html' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} 
+{% block content %}
 
-<form
-  action="{% url 'add_recipe' %}"
-  method="POST"
-  enctype="multipart/form-data"
->
-  {% csrf_token %}
+<form method="POST" enctype="multipart/form-data">
   <div>
     <h1>Add a Recipe</h1>
-    {{ form | crispy }}
+    {% csrf_token %} {{ recipe_form | crispy }}
   </div>
-  <button>Submit</button>
+  <button type="submit">Submit</button>
 </form>
 
 {% endblock %}

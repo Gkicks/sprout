@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views import generic
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -30,11 +31,17 @@ def recipe_detail(request, slug):
 
 
 def add_recipe(request):
-    recipe_form = RecipeForm
     if request.method == 'POST':
-        context = {
-            'recipe_form': recipe_form,
-        }
+        recipe_form = RecipeForm(request.POST)
+        if recipe_form.is_valid():
+            recipe = recipe_form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Recipe submitted and awaiting approval')
+    else:
+        recipe_form = RecipeForm
     return render(
         request,
         'blog/add_recipe.html',
