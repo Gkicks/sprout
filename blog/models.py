@@ -10,9 +10,10 @@ CATEGORY = ((0, 'Breakfast'), (1, 'Starter'), (2, 'Main'),
 
 
 class Recipe(models.Model):
-    recipe_name = models.CharField(max_length=100, unique=True)
+    recipe_name = models.CharField(max_length=255, unique=True)
     slug = AutoSlugField(
-        populate_from='recipe_name', editable=True, always_update=True)
+        max_length=255, populate_from='recipe_name', editable=True,
+        always_update=True,)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipe_author')
     featured_image = CloudinaryField('image', default='placeholder')

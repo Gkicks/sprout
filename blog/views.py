@@ -3,17 +3,22 @@ from django.views import generic
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from django.contrib import messages
-
-# Create your views here.
+from django.contrib.auth.mixins import UserPassesTestMixin
 
 
 class RecipeList(generic.ListView):
+    """
+    to display a list of all receipes
+    """
     queryset = Recipe.objects.all()
     template_name = "blog/index.html"
     paginate_by = 4
 
 
 def recipe_detail(request, slug):
+    """
+    returns a view of the full recipe
+    """
     queryset = Recipe.objects.filter(approved=True)
     recipe = get_object_or_404(queryset, slug=slug)
     comments = recipe.comments.all().order_by("created_on")
@@ -31,6 +36,9 @@ def recipe_detail(request, slug):
 
 
 def add_recipe(request):
+    """
+    user to complete form to add a recipe and this to save to the database
+    """
     if request.method == 'POST':
         recipe_form = RecipeForm(request.POST)
         if recipe_form.is_valid():
@@ -50,22 +58,14 @@ def add_recipe(request):
         })
 
 
-# class MyRecipesList(generic.ListView):
-
-    # queryset = Recipe.objects.filter(author=request.user).first()
-    # template_name = "blog/my_recipes.html"
-    # paginate_by = 20
-
-    # def my_recipes():
-    # if request.user is authenticated:
-    # recipes = Recipe.objects.filter(author=user)
-    # else:
-    # pass
-
-    # return render(
-    # request,
-    # "blog/my_recipes.html",
-    # {
-    # "recipes": recipes,
-    # },
-    # )
+def user_recipes(request):
+    """
+    return a list of recipes where the logged in user is the author
+    """
+    user_recipes = Recipe.objects.filter(author=request.user).order_by('-created_on')
+    return render(
+        request, 
+        'blog/my_recipes.html',
+        {
+            "user_recipes": user_recipes,
+        })
