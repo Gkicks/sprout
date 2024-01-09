@@ -17,46 +17,41 @@
     <div class="row">
       {% for recipe in recipe_list %}
       <div class="col-md-4 col-lg-3 mt-3">
-        <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
         <div class="card h-100">
           <div class="card-body">
             <div>
               <p class="card-footer text-center">
                 Category: {{ recipe.get_category_display }}
               </p>
-              <div class="image-container">
-                {% if "placeholder" in recipe.featured_image %}
-                <img
-                  class="card-img"
-                  src="{% static 'images/sprout-favicon.jpg' %}"
-                  alt="placeholder image"
-                />
-                {% else %}
-                <img
-                  class="card-img"
-                  src="{{ recipe.featured_image.url }}"
-                  alt="{{ recipe.recipe_name }}"
-                />
-                {% endif %}
-              </div>
+                <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
+                  <div class="image-container">
+                    {% if "placeholder" in recipe.featured_image %}
+                    <img
+                    class="card-img"
+                    src="{% static 'images/sprout-favicon.jpg' %}"
+                    alt="placeholder image"
+                    />
+                    {% else %}
+                    <img
+                    class="card-img"
+                    src="{{ recipe.featured_image.url }}"
+                    alt="{{ recipe.recipe_name }}"
+                    />
+                    {% endif %}
+                </div>
 
-              <div class="card-title text-center">
-                <h2>{{ recipe.recipe_name }}</h2>
-              </div>
-              </a>
-              <!-- <div class="card-body"> -->
-
-              <!-- <p>Author: {{ recipe.author }}</p> -->
-              <!-- <hr /> -->
-              <!-- <p class="muted">Date Created: {{ recipe.created_on }}</p> -->
+                <div class="card-title text-center">
+                    <h2>{{ recipe.recipe_name }}</h2>
+                </div>
+                </a>
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+        </div>
     </div>
-  </div>
-</div>
+    </div>
 
 <!-- pagination -->
 <nav aria-label="Page navigation">

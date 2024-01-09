@@ -48,3 +48,24 @@ def add_recipe(request):
         {
             "recipe_form": recipe_form,
         })
+
+
+# class MyRecipesList(generic.ListView):
+
+    # queryset = Recipe.objects.filter(author=request.user).first()
+    # template_name = "blog/my_recipes.html"
+    # paginate_by = 20
+
+    # def my_recipes():
+    # if request.user is authenticated:
+    # recipes = Recipe.objects.filter(author=user)
+    # else:
+    # pass
+
+    # return render(
+    # request,
+    # "blog/my_recipes.html",
+    # {
+    # "recipes": recipes,
+    # },
+    # )
