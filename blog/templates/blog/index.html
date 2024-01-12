@@ -15,55 +15,67 @@
 <div class="container-fluid">
   <div class="col-12 mt-3 mb-3">
     <div class="row">
-      {% for recipe in recipe_list %}
-      <div class="col-md-4 col-lg-3 mt-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <div>
-              <p class="card-footer text-center">
-                Category: {{ recipe.get_category_display }}
-              </p>
-                <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
-                  <div class="image-container">
-                    {% if "placeholder" in recipe.featured_image %}
-                    <img
-                    class="card-img"
-                    src="{% static 'images/sprout-favicon.jpg' %}"
-                    alt="placeholder image"
-                    />
-                    {% else %}
-                    <img
-                    class="card-img"
-                    src="{{ recipe.featured_image.url }}"
-                    alt="{{ recipe.recipe_name }}"
-                    />
-                    {% endif %}
+    <!-- to make sure there are recipes to display -->
+    {% if recipe_list %}  
+        <!-- to display each recipe in the database -->
+        {% for recipe in recipe_list %}
+        <div class="col-md-4 col-lg-3 mt-3">
+            <div class="card h-100">
+            <div class="card-body">
+                <div>
+                <!-- displays recipe category -->
+                <p class="card-footer text-center">
+                    Category: {{ recipe.get_category_display }}
+                </p>
+                    <!-- displays recipe image if there is one available -->
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
+                    <div class="image-container">
+                        <!-- displays favicon image if an image is not uploaded -->
+                        {% if "placeholder" in recipe.featured_image %}
+                        <img
+                        class="card-img"
+                        src="{% static 'images/sprout-favicon.jpg' %}"
+                        alt="placeholder image"
+                        />
+                        {% else %}
+                        <img
+                        class="card-img"
+                        src="{{ recipe.featured_image.url }}"
+                        alt="{{ recipe.recipe_name }}"
+                        />
+                        {% endif %}
+                    </div>
+                    <!-- displays recipe name -->
+                    <div class="card-title text-center">
+                        <h2>{{ recipe.recipe_name }}</h2>
+                    </div>
+                    </a>
+                    </div>
                 </div>
-
-                <div class="card-title text-center">
-                    <h2>{{ recipe.recipe_name }}</h2>
-                </div>
-                </a>
                 </div>
             </div>
+            {% endfor %}
+            {% else %}
+                <p>There are no recipes to display</p>
+        {% endif %}
             </div>
-        </div>
-        {% endfor %}
-        </div>
     </div>
     </div>
 
 <!-- pagination -->
 <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
+        <!-- shows a back arrow if there are recipes on previous pages -->
         {% if page_obj.has_previous %}
         <li class="nav-item">
             <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
         </li>
         {% endif %}
+        <!-- displays current page number and how many pages there are in total -->
         <li class="page-of-text nav-item m-2">
             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
         </li>
+        <!-- shows a forward arrow if there are more recipes on the next pages -->
         {% if page_obj.has_next %}
         <li class="nav-item">
             <a href="?page={{ page_obj.next_page_number }}" class="page-link">
