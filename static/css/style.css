@@ -1,9 +1,16 @@
+/* nav bar */
+
+#mainNav {
+    background-color: #dde6d5;
+}
+
 #logo {
     color: #667b68;
+    font-size: xx-large;
 }
 
 .hero-image {
-    background-image: url("../images/hero-image.jpg");
+    background-image: url("../images/hero-image.webp");
     width: 100%;
     background-size: cover;
     height: 60vh;

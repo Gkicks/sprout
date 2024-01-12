@@ -30,9 +30,14 @@
                                     <h2>{{ recipe.recipe_name }}</h2>
                                 </div>
                 </a>
-            </div>
+        <div>
+            <button class="btn edit-btn", recipe_id="{{ recipe.id }}">Edit</button>
+            <button>Delete</button>
+        </div>
+        </div>
         </div>
     </div>
+        
 </div>
 {% endfor %}
 </div>

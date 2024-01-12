@@ -31,23 +31,15 @@
                     <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
                     <div class="image-container">
                         <!-- displays favicon image if an image is not uploaded -->
-                        {% if "placeholder" in recipe.featured_image %}
-                        <img
-                        class="card-img"
-                        src="{% static 'images/sprout-favicon.jpg' %}"
-                        alt="placeholder image"
-                        />
+                        {% if "placeholder" in recipe.featured_image.url %}
+                        <img class="card-img" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
                         {% else %}
-                        <img
-                        class="card-img"
-                        src="{{ recipe.featured_image.url }}"
-                        alt="{{ recipe.recipe_name }}"
-                        />
+                        <img class="card-img" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
                         {% endif %}
                     </div>
                     <!-- displays recipe name -->
                     <div class="card-title text-center">
-                        <h2>{{ recipe.recipe_name }}</h2>
+                        <h1>{{ recipe.recipe_name }}</h1>
                     </div>
                     </a>
                     </div>
