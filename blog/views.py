@@ -13,29 +13,34 @@ class RecipeList(generic.ListView):
     """
     to display a list of all receipes
     """
-    queryset = Recipe.objects.all()
     template_name = "blog/index.html"
     paginate_by = 8
 
+    def get_queryset(self):
+        return Recipe.objects.all()
 
-def recipe_detail(request, slug):
-    """
-    returns a view of the full recipe
-    """
-    queryset = Recipe.objects.filter(approved=True)
-    recipe = get_object_or_404(queryset, slug=slug)
-    comments = recipe.comments.all().order_by("created_on")
-    comment_count = recipe.comments.filter(approved=True).count()
 
-    return render(
-        request,
-        "blog/recipe_detail.html",
-        {
-            "recipe": recipe,
-            "comments": comments,
-            "comment_count": comment_count,
-        },
-    )
+class RecipeDetailView(generic.DetailView):
+    model = Recipe
+
+    def recipe_detail(self, request, slug):
+        """
+        returns a view of the full recipe
+        """
+        queryset = Recipe.objects.filter(approved=True)
+        recipe = get_object_or_404(queryset, slug=slug)
+        comments = recipe.comments.all().order_by("created_on")
+        comment_count = recipe.comments.filter(approved=True).count()
+
+        return render(
+            request,
+            "blog/recipe_detail.html",
+            {
+                "recipe": recipe,
+                "comments": comments,
+                "comment_count": comment_count,
+            },
+        )
 
 
 def add_recipe(request):
