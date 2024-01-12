@@ -1,5 +1,4 @@
 /* nav bar */
-
 #mainNav {
     background-color: #dde6d5;
 }
@@ -9,6 +8,7 @@
     font-size: xx-large;
 }
 
+/* landing page image*/
 .hero-image {
     background-image: url("../images/hero-image.webp");
     width: 100%;
@@ -30,24 +30,47 @@
     height: 50%;
     left: 37.5%;
     top: 25%;
+    padding: 0.25rem;
 }
 
+#hero-tagline {
+    /* text-align: center; */
+    color: #893f04;
+    font-size: xx-large;
+}
+
+/* landing page recipe display */
 .card-footer {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.page-link,
-.page-of-text {
-    color: #667b68;
-}
-
 .card-img {
-    /* width: 100%; */
     height: 15vw;
     object-fit: cover;
     padding-bottom: 3vh;
 }
 
+#name-display {
+    font-size: x-large
+}
+
+.recipe-link {
+    color: #893f04;
+    text-decoration: none;
+}
+
+.recipe-link:hover {
+    color: #667b68;
+    text-decoration: none;
+}
+
+/* pagination */
+.page-link,
+.page-of-text {
+    color: #667b68;
+}
+
+/* comments */
 .faded {
     font-weight: lighter;
 }

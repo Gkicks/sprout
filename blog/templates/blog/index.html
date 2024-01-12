@@ -3,8 +3,8 @@
 <section>
   <div class="hero-image">
     <div class="hero-blurb">
-      <p>
-        Sprout: The community for plant based people to share their wholefood
+      <p id="hero-tagline" class="text-center">
+        Sprout - The community for plant based people to share their wholefood
         recipes!
       </p>
     </div>
@@ -28,9 +28,9 @@
                     Category: {{ recipe.get_category_display }}
                 </p>
                     <!-- displays recipe image if there is one available -->
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="post-link">
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
                     <div class="image-container">
-                        <!-- displays favicon image if an image is not uploaded -->
+                        <!-- displays default image if an image is not uploaded -->
                         {% if "placeholder" in recipe.featured_image.url %}
                         <img class="card-img" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
                         {% else %}
@@ -39,7 +39,7 @@
                     </div>
                     <!-- displays recipe name -->
                     <div class="card-title text-center">
-                        <h1>{{ recipe.recipe_name }}</h1>
+                        <h1 id="name-display">{{ recipe.recipe_name }}</h1>
                     </div>
                     </a>
                     </div>
