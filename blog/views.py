@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.views.generic.edit import UpdateView
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 class RecipeList(generic.ListView):
@@ -38,6 +41,8 @@ def recipe_detail(request, slug):
 def add_recipe(request):
     """
     user to complete form to add a recipe and this to save to the database
+    redirects back to the home page when valid form is submitted
+    sucess message displayed
     """
     if request.method == 'POST':
         recipe_form = RecipeForm(request.POST)
@@ -48,24 +53,88 @@ def add_recipe(request):
             messages.add_message(
                 request, messages.SUCCESS,
                 'Recipe submitted and awaiting approval')
+            return HttpResponseRedirect(reverse(''))
     else:
         recipe_form = RecipeForm
-    return render(
-        request,
-        'blog/add_recipe.html',
-        {
-            "recipe_form": recipe_form,
-        })
+        return render(
+            request,
+            'blog/add_recipe.html',
+            {
+             "recipe_form": recipe_form,
+            })
 
 
 def user_recipes(request):
     """
     return a list of recipes where the logged in user is the author
     """
-    user_recipes = Recipe.objects.filter(author=request.user).order_by('-created_on')
+    user_recipes = Recipe.objects.filter(
+        author=request.user).order_by('-created_on')
     return render(
-        request, 
+        request,
         'blog/my_recipes.html',
         {
             "user_recipes": user_recipes,
         })
+
+
+# class EditView(UserPassesTestMixin, UpdateView):
+    """
+    view for the user to edit their recipes
+    """
+
+    # def test_func(self):
+    #     return self.request.user == self.get_object().author
+
+    # def edit_recipe(request, slug):
+    #     if request.method == 'POST':
+    #         recipes = Recipe.objects.all()
+    #         recipe = get_object_or_404(recipes, slug)
+    #         recipe_form = RecipeForm(data=request.POST, instance=recipe)
+
+    #         if recipe_form.is_valid():
+    #             recipe = recipe_form.save(commit=False)
+    #             recipe.author = request.user
+    #             recipe.save()
+    #             messages.add_message(
+    #                 request, messages.SUCCESS,
+    #                 'Recipe sucessfully updated awaiting approval')
+    #         else:
+    #             recipe_form = RecipeForm
+    #         return render(
+    #             request,
+    #             'blog/add_recipe.html',
+    #             {
+    #                 "recipe_form": recipe_form,
+    #             })
+    #     else:
+    #         messages.add_message(
+    #             request, messages.ERROR('Error editing recipe'))
+
+    #     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+def edit_recipe(request, slug, recipe_id):
+    """
+    view for the user to edit their recipes
+    """
+    if request.method == 'POST':
+        recipes = Recipe.objects.all()
+        recipe = get_object_or_404(recipes, slug)
+        recipe_form = RecipeForm(data=request.POST, instance=recipe)
+
+        if recipe_form.is_valid():
+            recipe = recipe_form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Recipe sucessfully updated awaiting approval')
+        else:
+            recipe_form = RecipeForm
+        return render(
+            request,
+            'blog/add_recipe.html',
+            {
+                "recipe_form": recipe_form,
+            })
