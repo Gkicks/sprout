@@ -3,7 +3,7 @@ from django.views import generic
 from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import CreateView, UpdateView
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
@@ -43,7 +43,7 @@ class RecipeDetailView(generic.DetailView):
         )
 
 
-class CreateRecipe(CreateView):
+class CreateRecipe(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
     success_url = reverse_lazy('home')
