@@ -1,6 +1,6 @@
 {% load static %}
 {% url 'home' as home_url %}
-{% url 'add_recipe' as add_recipe_url %}
+{% url 'create_recipe' as create_recipe_url %}
 {% url 'user_recipes' as user_recipes_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -68,7 +68,7 @@
             <!-- my recipes page link -->
             {% if user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link px-lg-3 py-3 py-lg-4 {% if request.path == add_recipe_url %}active{% endif %}" aria-current="page" href="{% url 'add_recipe' %}">Add Recipe</a>
+                <a class="nav-link px-lg-3 py-3 py-lg-4 {% if request.path == create_recipe_url %}active{% endif %}" aria-current="page" href="{% url 'create_recipe' %}">Add Recipe</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link px-lg-3 py-3 py-lg-4 {% if request.path == my_recipes_url %}active{% endif %}"

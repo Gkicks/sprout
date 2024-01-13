@@ -7,6 +7,7 @@ class RecipeForm(forms.ModelForm):
         model = Recipe
         fields = ('recipe_name', 'featured_image', 'category',
                   'content', 'ingredients', 'method', 'servings')
+        # exclude = ('author',)
 
 
 class CommentForm(forms.ModelForm):

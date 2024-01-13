@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %} 
 {% block content %}
 
-<form method="POST" enctype="multipart/form-data">
+<form method="POST" action='' enctype="multipart/form-data">
   <div>
     <h1>Add a Recipe</h1>
-    {% csrf_token %} {{ recipe_form | crispy }}
+    {% csrf_token %} {{ form | crispy }}
   </div>
   <button type="submit">Submit</button>
 </form>
