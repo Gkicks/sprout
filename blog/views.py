@@ -47,7 +47,6 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
     success_url = reverse_lazy('home')
-    # success_message = 'Recipe submitted and awaiting approval'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -72,16 +71,17 @@ def user_recipes(request):
         })
 
 
-# class EditRecipe(UpdateView):
-#     form_class = RecipeForm
-#     template_name = 'blog/create_recipe.html'
-#     success_url = reverse_lazy('home')
-    # success_message = 'Recipe submitted and awaiting approval'
+class EditRecipe(UpdateView):
+    queryset = Recipe.objects.all()
+    form_class = RecipeForm
+    template_name = 'blog/create_recipe.html'
+    success_url = reverse_lazy('home')
 
-    # def form_valid(self, form):
-    #     form.instance.author = self.request.user
-    #     messages.success(
-    #         self.request,
-    #         'Recipe submitted and awaiting approval')
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.approved = False
+        messages.success(
+            self.request,
+            'Recipe updated and awaiting approval')
 
-    #     return super().form_valid(form)
+        return super().form_valid(form)

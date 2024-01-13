@@ -3,10 +3,10 @@
 
 <form method="POST" action='' enctype="multipart/form-data">
   <div>
-    <h1>Add a Recipe</h1>
+    <h1 id="form-title"></h1>
     {% csrf_token %} {{ form | crispy }}
   </div>
-  <button type="submit">Submit</button>
+  <button id="form-submit-button" type="submit"></button>
 </form>
 
 {% endblock %}

@@ -74,3 +74,7 @@
 .faded {
     font-weight: lighter;
 }
+
+#my-recipe-img>.card-img {
+    height: 5vw;
+}

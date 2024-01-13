@@ -74,3 +74,11 @@
 .faded {
     font-weight: lighter;
 }
+
+#my-recipe-img>.card-img {
+    height: 5vw;
+}
+
+.my-recipe-row {
+    border: 1px solid black;
+}
