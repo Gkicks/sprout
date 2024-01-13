@@ -72,16 +72,16 @@ def user_recipes(request):
         })
 
 
-class EditRecipe(UpdateView):
-    form_class = RecipeForm
-    template_name = 'blog/create_recipe.html'
-    success_url = reverse_lazy('home')
+# class EditRecipe(UpdateView):
+#     form_class = RecipeForm
+#     template_name = 'blog/create_recipe.html'
+#     success_url = reverse_lazy('home')
     # success_message = 'Recipe submitted and awaiting approval'
 
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        messages.success(
-            self.request,
-            'Recipe submitted and awaiting approval')
+    # def form_valid(self, form):
+    #     form.instance.author = self.request.user
+    #     messages.success(
+    #         self.request,
+    #         'Recipe submitted and awaiting approval')
 
-        return super().form_valid(form)
+    #     return super().form_valid(form)
