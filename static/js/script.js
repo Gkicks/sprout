@@ -1,9 +1,16 @@
-const editButtons = document.getElementsByClassName("edit-btn");
-const recipeForm = document.getElementById("recipeForm");
+const formTitle = document.getElementById("form-title");
+const formSubmit = document.getElementById("form-submit-button");
+const url = window.location.href;
 
+console.log('working');
 
-for (let button of editButtons)
-    button.addEventListener("click", (e) => {
-        const recipeId = e.target.getAttribute("recipe_id");
-        recipeForm.setAttribute("action", `edit_recipe / ${recipeId}`);
-    });
+window.addEventListener('load', function () {
+    if (url.includes('edit_recipe')) {
+        formTitle.innerHTML = 'Edit Recipe';
+        formSubmit.innerHTML = 'Update Recipe';
+    }
+    else {
+        formTitle.innerHTML = 'Add Recipe';
+        formSubmit.innerHTML = 'Submit Recipe';
+    }
+});
