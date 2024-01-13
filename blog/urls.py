@@ -9,4 +9,6 @@ urlpatterns = [
     path('blog/my_recipes/', views.user_recipes, name='user_recipes'),
     path('blog/edit_recipe/<slug>/',
          views.EditRecipe.as_view(), name='edit_recipe'),
+    path('blog/confirm-delete/<slug>/',
+         views.DeleteRecipe.as_view(), name='delete_recipe'),
 ]

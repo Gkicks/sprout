@@ -4,7 +4,7 @@ from .models import Recipe, Comment
 from .forms import RecipeForm, CommentForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
@@ -75,7 +75,7 @@ class EditRecipe(UserPassesTestMixin, UpdateView):
     queryset = Recipe.objects.all()
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('user_recipes')
 
     def test_func(self):
         return self.request.user == self.get_object().author
@@ -88,3 +88,30 @@ class EditRecipe(UserPassesTestMixin, UpdateView):
             'Recipe updated and awaiting approval')
 
         return super().form_valid(form)
+
+
+class DeleteRecipe(UserPassesTestMixin, DeleteView):
+    model = Recipe
+    template_name = 'blog/confirm-delete.html'
+    success_url = reverse_lazy('user_recipes')
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+    def form_valid(self, form):
+        messages.success(
+            self.request,
+            'Your recipe has been deleted')
+
+        return super().form_valid(form)
+
+    def delete(self, request, *args, **kwargs):
+        """
+        Call the delete() method on the fetched object and then redirect to the
+        success URL.
+        """
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.delete()
+
+        return HttpResponseRedirect(success_url)
