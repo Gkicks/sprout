@@ -71,11 +71,14 @@ def user_recipes(request):
         })
 
 
-class EditRecipe(UpdateView):
+class EditRecipe(UserPassesTestMixin, UpdateView):
     queryset = Recipe.objects.all()
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
     success_url = reverse_lazy('home')
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
 
     def form_valid(self, form):
         form.instance.author = self.request.user
