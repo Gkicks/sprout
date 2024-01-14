@@ -1,14 +1,14 @@
 {% extends 'base.html' %} {% load crispy_forms_tags %} {% load static %}
 {% block content %}
 
-<h1>My Recipes:</h1>
+<h1 class="col-12"->My Recipes:</h1>
 <!-- recipe card library -->
 <div class="container">
     {% for recipe in user_recipes %}
-        <div class="row my-recipe-row mb-2">
-            <div class="col-12">
+        <!-- <div class="row my-recipe-row mb-2"> -->
+            <!-- <div class="col-12"> -->
                 <div class="row h-100">
-                    <div class="col-2 col-lg-1 my-auto text-center">
+                    <div class="col-md-2 col-3 my-auto text-center">
                         <div class="image-container my-auto" id="my-recipe-img">
                             <!-- displays default image if an image is not uploaded -->
                             {% if "placeholder" in recipe.featured_image.url %}
@@ -18,34 +18,34 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="col-4 my-auto text-wrap text-center">
+                    <div class="col-md-3 col-5 my-auto text-wrap {% if not recipe.approved %}faded{% endif %}">
                         <p>{{ recipe.recipe_name | truncatechars:50 }}</p>
                     </div>
-                    <div class="col-3 my-auto text-wrap text-center">
+                    <div class="col-md-2 col-3 my-auto text-wrap {% if not recipe.approved %}faded{% endif %}">
                         {% if recipe.approved %}
                             <p>Approved? Yes</p>
                         {% else %}
                             <p>Approved? No</p>
                         {% endif %}
                     </div>
-                    <div class="col-1 my-auto text-center">
+                    <div class="col-auto text-center my-recipe-btn">
                         <form action="{% url 'recipe_detail' recipe.slug %}" method="GET">
                             <button class="btn btn-outline-warning">View</button>
                         </form>
                     </div>
-                    <div class="col-1 my-auto text-center">
+                    <div class="col-auto text-center my-recipe-btn">
                         <form action="{% url 'edit_recipe' recipe.slug %}" method="GET">
                         <button class="btn btn-outline-success">Edit</button>
                         </form>
                     </div>
-                    <div class="col-1 my-auto text-center">
+                    <div class="col-auto text-center my-recipe-btn">
                         <form action="{% url 'delete_recipe' recipe.slug %}" method="GET">
                         <button class="btn btn-outline-danger">Delete</button>
                         </form>
                     </div>
                 </div>
-            </div>
-        </div>
+            <!-- </div> -->
+        <!-- </div> -->
         <hr>
     {% endfor %}
 </div>

@@ -1,16 +1,49 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Crete+Round&family=Kanit&display=swap');
+
+/* universal styling */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'arimo', 'sans-serif';
+}
+
+:root {
+    --brown: #8b4513;
+    --pink: #bc8f8f;
+    --pale-pink: #ffe4e1;
+    --sage: #dde6d5;
+    --dark-green: #667B68;
+    --grey: #857f7f;
+    --white: #ffffff;
+}
+
 .hidden {
     height: 0;
     width: 0;
 }
 
+.faded {
+    font-weight: lighter;
+}
+
 /* nav bar */
 #mainNav {
-    background-color: #dde6d5;
+    background-color: var(--sage);
 }
 
 #logo {
-    color: #667b68;
+    color: var(--dark-green);
     font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'kanit', 'sans-serif';
+}
+
+/* footer */
+footer {
+    background-color: var(--dark-green);
+    color: var(--white);
 }
 
 /* landing page image*/
@@ -26,9 +59,8 @@
 }
 
 .hero-blurb {
-    background-color: #fceee9;
+    background-color: var(--pale-pink);
     text-align: center;
-    color: #f8d3c5;
     border-radius: 0.25rem;
     position: absolute;
     width: 25%;
@@ -39,8 +71,7 @@
 }
 
 #hero-tagline {
-    /* text-align: center; */
-    color: #893f04;
+    color: var(--brown);
     font-size: xx-large;
 }
 
@@ -64,47 +95,27 @@
     height: 100%;
 }
 
-
-/* .card-img { */
-/* height: 15vw; */
-/* object-fit: cover; */
-/* padding-bottom: 3vh; */
-/* } */
-
-/* .img-fluid {
-    height: 100%;
-    width: auto;
-} */
-
 #name-display {
     font-size: x-large
 }
 
 .recipe-link {
-    color: #893f04;
+    color: var(--brown);
     text-decoration: none;
 }
 
 .recipe-link:hover {
-    color: #667b68;
+    color: var(--dark-green);
     text-decoration: none;
 }
 
 /* pagination */
 .page-link,
 .page-of-text {
-    color: #667b68;
+    color: var(--dark-green);
 }
 
-/* comments */
-.faded {
-    font-weight: lighter;
-}
-
-/* .my-recipe-row {
-    border: 1px solid black;
-} */
-
-.text-trunc {
-    text-overflow: ellipsis;
+/* my recipes page */
+.my-recipe-btn {
+    margin-top: 5%;
 }
