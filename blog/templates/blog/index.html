@@ -32,9 +32,9 @@
                     <div class="image-container">
                         <!-- displays default image if an image is not uploaded -->
                         {% if "placeholder" in recipe.featured_image.url %}
-                        <img class="card-img" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
+                        <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
                         {% else %}
-                        <img class="card-img" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
+                        <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
                         {% endif %}
                     </div>
                     <!-- displays recipe name -->

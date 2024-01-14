@@ -44,11 +44,32 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-img {
-    height: 15vw;
-    object-fit: cover;
-    padding-bottom: 3vh;
+.image-container {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+    width: 100%;
 }
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* .card-img { */
+/* height: 15vw; */
+/* object-fit: cover; */
+/* padding-bottom: 3vh; */
+/* } */
+
+/* .img-fluid {
+    height: 100%;
+    width: auto;
+} */
 
 #name-display {
     font-size: x-large
@@ -75,10 +96,6 @@
     font-weight: lighter;
 }
 
-#my-recipe-img>.card-img {
-    height: 5vw;
-}
-
-.my-recipe-row {
+/* .my-recipe-row {
     border: 1px solid black;
-}
+} */
