@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- index.html content starts here -->
-<section>
+<section id="hero-section" class="hidden">
   <div class="hero-image">
     <div class="hero-blurb">
       <p id="hero-tagline" class="text-center">
@@ -19,7 +19,7 @@
     {% if recipe_list %}  
         <!-- to display each recipe in the database -->
         {% for recipe in recipe_list %}
-        <div class="col-md-4 col-lg-3 mt-3">
+        <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
             <div class="card h-100">
             <div class="card-body">
                 <div>

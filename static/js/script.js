@@ -1,8 +1,8 @@
 const formTitle = document.getElementById("form-title");
 const formSubmit = document.getElementById("form-submit-button");
 const url = window.location.href;
-
-console.log('working');
+const heroSection = document.getElementById('hero-section');
+const page = document.getElementsByClassName('page-of-text');
 
 window.addEventListener('load', function () {
     if (url.includes('edit_recipe')) {
@@ -12,5 +12,11 @@ window.addEventListener('load', function () {
     else {
         formTitle.innerHTML = 'Add Recipe';
         formSubmit.innerHTML = 'Submit Recipe';
+    }
+});
+
+window.addEventListener('load', function () {
+    if (page[0].textContent.includes('Page 1')) {
+        heroSection.classList.remove('hidden');
     }
 });
