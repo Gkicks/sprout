@@ -1,9 +1,9 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- index.html content starts here -->
-<section id="hero-section" class="hidden">
-  <div class="hero-image">
-    <div class="hero-blurb">
-      <p id="hero-tagline" class="text-center">
+<section id="hero-section" class="container-fluid hidden">
+  <div class="row hero-image">
+    <div class="col-8 col-sm-6 col-md-4 offset-2 offset-sm-3 offset-md-4 p-4 my-auto hero-blurb">
+      <p id="hero-tagline" class="my-auto text-center">
         Sprout - The community for plant based people to share their wholefood
         recipes!
       </p>
@@ -38,7 +38,7 @@
                         {% endif %}
                     </div>
                     <!-- displays recipe name -->
-                    <div class="card-title text-center">
+                    <div class="card-title text-center mt-3">
                         <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
                     </div>
                     </a>
@@ -78,3 +78,5 @@
 </nav>
 
 {% endblock %}
+
+

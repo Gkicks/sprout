@@ -49,7 +49,6 @@ footer {
 /* landing page image*/
 .hero-image {
     background-image: url("../images/hero-image.webp");
-    width: 100%;
     background-size: cover;
     height: 60vh;
     background-repeat: no-repeat;
@@ -60,19 +59,15 @@ footer {
 
 .hero-blurb {
     background-color: var(--pale-pink);
-    text-align: center;
+    opacity: 85%;
     border-radius: 0.25rem;
-    position: absolute;
-    width: 25%;
-    height: 50%;
-    left: 37.5%;
-    top: 25%;
-    padding: 0.25rem;
 }
 
 #hero-tagline {
     color: var(--brown);
-    font-size: xx-large;
+    font-size: 1.5rem;
+    opacity: 100%;
+    font-weight: 600;
 }
 
 /* landing page recipe display */
