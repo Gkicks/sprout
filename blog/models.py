@@ -48,7 +48,7 @@ class Comment(models.Model):
         return self.body
 
 
-class rating(models.Model):
+class Rating(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='rating')
     author = models.ForeignKey(
