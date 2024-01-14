@@ -104,3 +104,7 @@
 /* .my-recipe-row {
     border: 1px solid black;
 } */
+
+.text-trunc {
+    text-overflow: ellipsis;
+}

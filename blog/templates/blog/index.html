@@ -39,7 +39,7 @@
                     </div>
                     <!-- displays recipe name -->
                     <div class="card-title text-center">
-                        <h1 id="name-display">{{ recipe.recipe_name }}</h1>
+                        <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
                     </div>
                     </a>
                     </div>
