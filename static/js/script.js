@@ -9,7 +9,7 @@ window.addEventListener('load', function () {
         formTitle.innerHTML = 'Edit Recipe';
         formSubmit.innerHTML = 'Update Recipe';
     }
-    else {
+    else if (url.includes('create_recipe')) {
         formTitle.innerHTML = 'Add Recipe';
         formSubmit.innerHTML = 'Submit Recipe';
     }

@@ -1,5 +1,7 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 {% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
 
 <div class="image-container">
     {% if "placeholder" in recipe.featured_image %}
@@ -9,15 +11,18 @@
     {% endif %}
 </div>
 <div>
-    <h2>{{ recipe.recipe_name }}</h2>
+    <h1>{{ recipe.recipe_name }}</h1>
 </div>
 <div>
+    <h2>Ingredients</h2>
     {{ recipe.ingredients }}
 </div>
 <div>
+    <h2>Method</h2>
     {{ recipe.method }}
 </div>
 <div>
+    <h3>Servings</h3>
     {{ recipe.servings }}
 </div>
 <div>
@@ -40,6 +45,13 @@
         <p>There are no comments to display</p>
     {% endif %}
 </div>
-
+<form id="commentForm" method="POST" action='' enctype="multipart/form-data">
+    <div>
+        {% csrf_token %}
+        <!-- {{ comment_form | crispy }} -->
+        {{ comment_form.as_p }}
+    </div>
+    <button id="form-submit-button" type="submit">Submit Comment</button>
+</form>
 
 {% endblock content %}

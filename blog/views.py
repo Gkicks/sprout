@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
-from .models import Recipe, Comment
-from .forms import RecipeForm, CommentForm
+from .models import Recipe, Comment, Rating
+from .forms import RecipeForm, CommentForm, RatingForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
 
@@ -21,16 +21,17 @@ class RecipeList(generic.ListView):
 
 
 class RecipeDetailView(generic.DetailView):
+    """
+    returns a view of the full recipe
+    displays comments under the recipe
+    shows a form for the user to leave a new comment
+    """
     model = Recipe
 
-    def recipe_detail(self, request, slug):
-        """
-        returns a view of the full recipe
-        """
+    def get(self, request, slug, *args, **kwargs):
         queryset = Recipe.objects.filter(approved=True)
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
-        comment_count = recipe.comments.filter(approved=True).count()
 
         return render(
             request,
@@ -38,9 +39,62 @@ class RecipeDetailView(generic.DetailView):
             {
                 "recipe": recipe,
                 "comments": comments,
-                "comment_count": comment_count,
+                "comment_form": CommentForm()
             },
         )
+
+    def post(self, request, slug, *args, **kwargs):
+        queryset = Recipe.objects.filter(approved=True)
+        recipe = get_object_or_404(queryset, slug=slug)
+        comments = recipe.comments.all().order_by("created_on")
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.author = self.request.user
+            comment.save()
+            messages.success(
+                self.request,
+                'Comment submitted and awaiting approval')
+            comment_form = CommentForm()
+        else:
+            comment_form = CommentForm()
+
+        return render(
+            request,
+            "blog/recipe_detail.html",
+            {
+                "recipe": recipe,
+                "comments": comments,
+                "comment_form": comment_form,
+            },
+        )
+
+
+# def comment_form(request):
+#     if request.method == 'POST':
+#         comment_form = CommentForm(request.POST)
+#         if form.is_valid():
+#             comment = comment_form.save(commit=False)
+#             comment.recipe = recipe
+#             author = self.request.user
+#             comment.save()
+#             messages.success(
+#                 self.request,
+#                 'Comment submitted and awaiting approval')
+#         else:
+#             comment_form = CommentForm()
+
+#     return render(
+#         request,
+#         'recipe_detail.html',
+#         {
+#             'recipe': recipe,
+#             'comment': comment,
+#             'comment_form': comment_form
+#             # 'author': author,
+#         }
+#     )
 
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
