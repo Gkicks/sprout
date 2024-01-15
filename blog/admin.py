@@ -18,4 +18,4 @@ class CommentAdmin(admin.ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ['author', 'rating', 'created_on']
+    list_display = ['rating',]

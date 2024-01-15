@@ -51,11 +51,8 @@ class Comment(models.Model):
 class Rating(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='rating')
-    author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name='rater')
     rating = models.IntegerField(default=5, validators=[
         MinValueValidator(1), MaxValueValidator(5)])
-    created_on = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.rating
