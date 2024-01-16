@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from autoslug import AutoSlugField
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
 
 CATEGORY = ((0, 'Breakfast'), (1, 'Starter'), (2, 'Main'),
             (3, 'Snack'), (4, 'Side'), (5, 'Dessert'), (6, 'Drink'))
@@ -37,7 +37,7 @@ class Comment(models.Model):
         Recipe, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='commentor')
-    body = models.TextField(blank=False)
+    body = models.TextField(validators=[MinLengthValidator(3)])
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
 
@@ -51,8 +51,8 @@ class Comment(models.Model):
 class Rating(models.Model):
     recipe = models.ForeignKey(
         Recipe, on_delete=models.CASCADE, related_name='rating')
-    rating = models.IntegerField(default=5, validators=[
-        MinValueValidator(1), MaxValueValidator(5)])
+    rating = models.IntegerField(blank=True, default=0, validators=[
+        MinValueValidator(1), MaxValueValidator(5)],)
 
     def __str__(self):
         return self.rating
