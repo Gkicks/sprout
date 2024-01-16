@@ -4,9 +4,10 @@ from .models import Recipe, Comment, Rating
 from .forms import RecipeForm, CommentForm, RatingForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from django.db.models import Avg
 
 
 class RecipeList(generic.ListView):
@@ -29,9 +30,10 @@ class RecipeDetailView(generic.DetailView):
     model = Recipe
 
     def get(self, request, slug, *args, **kwargs):
-        queryset = Recipe.objects.filter(approved=True)
+        queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
+        # ratings = Rating.objects.all()
 
         return render(
             request,
@@ -39,26 +41,45 @@ class RecipeDetailView(generic.DetailView):
             {
                 "recipe": recipe,
                 "comments": comments,
-                "comment_form": CommentForm()
+                "comment_form": CommentForm(),
+                "rating_form": RatingForm(),
             },
         )
 
     def post(self, request, slug, *args, **kwargs):
-        queryset = Recipe.objects.filter(approved=True)
+        queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
         comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            comment = comment_form.save(commit=False)
-            comment.recipe = recipe
-            comment.author = self.request.user
-            comment.save()
-            messages.success(
-                self.request,
-                'Comment submitted and awaiting approval')
-            comment_form = CommentForm()
+        rating_form = RatingForm(data=request.POST)
+        comment = None
+        rating = None
+        if request.method == 'POST' and 'comment-submit' in request.POST:
+            rating = None
+            if comment_form.is_valid():
+                comment = comment_form.save(commit=False)
+                comment.recipe = recipe
+                comment.author = self.request.user
+                comment.save()
+                messages.success(
+                    self.request,
+                    'Comment submitted and awaiting approval')
+                rating_form = RatingForm()
+                comment_form = CommentForm()
+        elif request.method == 'POST' and 'rating-submit' in request.POST:
+            if rating_form.is_valid():
+                rating = rating_form.save(commit=False)
+                rating.recipe = recipe
+                rating.save()
+                messages.success(
+                    self.request,
+                    'Thank you for rating this recipe')
+                comment_form = CommentForm()
+                rating_form = RatingForm()
         else:
             comment_form = CommentForm()
+            rating_form = RatingForm()
+            print('Rating Not Saved')
 
         return render(
             request,
@@ -67,9 +88,53 @@ class RecipeDetailView(generic.DetailView):
                 "recipe": recipe,
                 "comments": comments,
                 "comment_form": comment_form,
+                "rating": rating,
+                "rating_form": rating_form,
             },
         )
 
+    # def rating_average(request):
+    #     queryset = Recipe.objects.all()
+    #     recipe = get_object_or_404(queryset, slug=slug)
+    #     ratings = recipe.ratings.all()
+    #     average = Recipe.objects.aggregate(Avg('rating'))
+    #     print('average')
+
+    #     return render(
+    #         request,
+    #         "blog/recipe_detail.html",
+    #         {
+    #             "recipe": recipe,
+    #             "average": average['avg_integer_field']
+    #         }
+    #     )
+
+    # def post_rating(self, request, slug, *args, **kwargs):
+    #     queryset = Recipe.objects.filter(approved=True)
+    #     recipe = get_object_or_404(queryset, slug=slug)
+    #     # comments = recipe.comments.all().order_by("created_on")
+    #     rating_form = RatingForm(data=request.POST)
+    #     if rating_form.is_valid():
+    #         rating = rating_form.save(commit=False)
+    #         rating.recipe = recipe
+    #         # comment.author = self.request.user
+    #         rating.save()
+    #         messages.success(
+    #             self.request,
+    #             'Thank you for rating this recipe')
+    #         rating_form = RatingForm()
+    #     else:
+    #         rating_form = RatingForm()
+
+    #     return render(
+    #         request,
+    #         "blog/recipe_detail.html",
+    #         {
+    #             "recipe": recipe,
+    #             "rating": rating,
+    #             "rating_form": rating_form,
+    #         },
+    #     )
 
 # def comment_form(request):
 #     if request.method == 'POST':
