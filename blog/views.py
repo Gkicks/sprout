@@ -98,30 +98,6 @@ class RecipeDetailView(generic.DetailView):
             },
         )
 
-    # def get_average_rating(self):
-        # rating = ratings.all(recipe=self.slug).aggregate()
-
-    
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     print('function working')
-    #     recipes = Recipe.objects.all()
-    #     recipe = get_object_or_404(recipes, slug=slug)
-    #     ratings = Rating.objects.filter(recipe=recipe)
-    #     print(ratings)
-    #     average_rating = ratings.aggregate(Avg('rating'))['rating__avg']
-    #     print('average_rating')
-
-    #     return context
-    #     # return render(
-        #     request,
-        #     "blog/recipe_detail.html",
-        #     {
-        #         "recipe": recipe,
-        #         "average_rating": average_rating
-        #     }
-        # )
-
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
