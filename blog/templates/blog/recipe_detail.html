@@ -49,19 +49,15 @@
     <div>
         {% csrf_token %}
         {{ comment_form | crispy }}
-        <!-- {{ comment_form.as_p }} -->
     </div>
     <button id="form-submit-button" type="submit" name="comment-submit">Submit Comment</button>
 </form>
-{% for rating in ratings %}
-<!-- {{ comments }} -->
-<p>Average: {{ average }}</p>
-{% endfor %}
-<form id="RatingForm" method="POST" action='' enctype="multipart/form-data">
+
+<p id="average-rating">Average: {{ average_number }}</p>
+
     <div>
         {% csrf_token %}
         {{ rating_form | crispy }}
-        <!-- {{ comment_form.as_p }} -->
     </div>
     <button id="form-submit-button" type="submit" name="rating-submit">Submit Rating</button>
 </form>
