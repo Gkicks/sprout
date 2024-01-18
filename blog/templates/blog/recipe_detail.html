@@ -3,6 +3,10 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
+<div>
+    <h1>{{ recipe.recipe_name }}</h1>
+</div>
+
 <div class="image-container">
     {% if "placeholder" in recipe.featured_image %}
     <img class="card-img" src="{% static 'images/sprout-favicon.jpg' %}" alt="placeholder image" />
@@ -10,9 +14,35 @@
     <img class="card-img" src="{{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name }}" />
     {% endif %}
 </div>
+
+<p  id="average-rating" class="hidden">{{ average_number }}</p>
 <div>
-    <h1>{{ recipe.recipe_name }}</h1>
+    {% if average_number == 0 %}
+        <p>There are no ratings for this recipe</p>
+    </div>
+{% else %}
+    <div>
+        <span id="star-one" class="star"></span>
+        <span id="star-two" class="star"></span>
+        <span id="star-three" class="star"></span>
+        <span id="star-four" class="star"></span>
+        <span id="star-five" class="star"></span>
+    </div>
+{% endif %}
+
+<form id="RatingForm" method="POST" action='' enctype="multipart/form-data">
+    <div>
+        {% csrf_token %}
+        {{ rating_form | crispy }}
+    </div>
+    <button id="form-submit-button" type="submit" name="rating-submit">Submit Rating</button>
+</form>
+
+<div>
+    <h3>Servings</h3>
+    {{ recipe.servings }}
 </div>
+
 <div>
     <h2>Ingredients</h2>
     {{ recipe.ingredients }}
@@ -21,10 +51,7 @@
     <h2>Method</h2>
     {{ recipe.method }}
 </div>
-<div>
-    <h3>Servings</h3>
-    {{ recipe.servings }}
-</div>
+
 <div>
     <h3>Comments: </h3>
 </div>
@@ -45,21 +72,13 @@
         <p>There are no comments to display</p>
     {% endif %}
 </div>
+
 <form id="commentForm" method="POST" action='' enctype="multipart/form-data">
     <div>
         {% csrf_token %}
         {{ comment_form | crispy }}
     </div>
     <button id="form-submit-button" type="submit" name="comment-submit">Submit Comment</button>
-</form>
-
-<p id="average-rating">Average: {{ average_number }}</p>
-
-    <div>
-        {% csrf_token %}
-        {{ rating_form | crispy }}
-    </div>
-    <button id="form-submit-button" type="submit" name="rating-submit">Submit Rating</button>
 </form>
 
 {% endblock content %}
