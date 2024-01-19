@@ -56,7 +56,3 @@ class Rating(models.Model):
 
     def __str__(self):
         return str(self.rating)
-
-    # @property
-    # def average_rating(self):
-    #     return self.rating.all().aggregate(Avg('rating')).get('rating__avg', 0.00)
