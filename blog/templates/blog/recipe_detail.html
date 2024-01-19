@@ -17,7 +17,7 @@
 
 <p  id="average-rating" class="hidden">{{ average_number }}</p>
 <div>
-    {% if average_number == 0 %}
+    {% if not average_number %}
         <p>There are no ratings for this recipe</p>
     </div>
 {% else %}
