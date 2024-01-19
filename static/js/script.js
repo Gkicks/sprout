@@ -43,7 +43,7 @@ window.addEventListener('load', function () {
     let averageRating = rating.innerText
     if (averageRating == 1) {
         for (let star of stars) {
-            star.classList.add('fa-regular, fa-star') 
+            star.classList.add('fa-regular', 'fa-star') 
         }
         starOne.classList = 'star fa-solid fa-star'
     }
@@ -56,14 +56,14 @@ window.addEventListener('load', function () {
     }
     else if (averageRating == 2) {
         for (let star of stars) {
-            star.classList.add('fa-regular, fa-star') 
+            star.classList.add('fa-regular', 'fa-star') 
         }
         starOne.className = 'star fa-solid fa-star'
         starTwo.className = 'star fa-solid fa-star'
     }
     else if (averageRating == 2.5) {
         for (let star of stars) {
-            star.classList.add('fa-regular, fa-star') 
+            star.classList.add('fa-regular', 'fa-star') 
         }
         starOne.className = 'star fa-solid fa-star'
         starTwo.className = 'star fa-solid fa-star'
@@ -71,21 +71,21 @@ window.addEventListener('load', function () {
     }
     else if (averageRating == 3) {
         for (let star of stars) {
-            star.classList.add('fa-solid, fa-star') 
+            star.classList.add('fa-solid', 'fa-star') 
         }
         starFour.className = 'start fa-regular fa-star'
         starFive.className = 'start fa-regular fa-star'
     }
     else if (averageRating == 3.5) {
         for (let star of stars) {
-            star.classList.add('fa-solid, fa-star') 
+            star.classList.add('fa-solid', 'fa-star') 
         }
         starFour.className = 'star fa-solid fa-star-half-stroke'
         starFive.className = 'start fa-regular fa-star'
     }
     else if (averageRating == 4) {
         for (let star of stars) {
-            star.classList.add('fa-solid, fa-star') 
+            star.classList.add('fa-solid', 'fa-star') 
         }
         starFive.className = 'start fa-regular fa-star'
     }
@@ -97,7 +97,7 @@ window.addEventListener('load', function () {
     }
     else if (averageRating == 5) {
         for (let star of stars) {
-            star.classList.add('fa-solid, fa-star') 
+            star.classList.add('fa-solid', 'fa-star') 
         }
     }
 })
