@@ -24,10 +24,6 @@ body {
     font-size: 0;
 }
 
-.faded {
-    font-weight: lighter;
-}
-
 /* nav bar */
 #mainNav {
     background-color: var(--sage);
@@ -113,4 +109,18 @@ footer {
 /* my recipes page */
 .my-recipe-btn {
     margin-top: 5%;
+}
+
+.html-header {
+    color: var(--brown);    
+}
+
+.my-recipe {
+    color: var(--grey)
+}
+
+.faded {
+    font-weight: 100;
+    color: var(--pink);
+    font-style: italic
 }
