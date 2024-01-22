@@ -1,65 +1,65 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<!-- index.html content starts here -->
+
+<!-- main photo and tagline -->
 <section id="hero-section" class="container-fluid hidden">
-  <div class="row hero-image">
-    <div class="col-8 col-sm-6 col-md-4 offset-2 offset-sm-3 offset-md-4 p-4 my-auto hero-blurb">
-      <p id="hero-tagline" class="my-auto text-center">
-        Sprout - The community for plant based people to share their wholefood
-        recipes!
-      </p>
+    <div class="row hero-image">
+        <div class="col-8 col-sm-6 col-md-4 offset-2 offset-sm-3 offset-md-4 p-4 my-auto hero-blurb">
+            <p id="hero-tagline" class="my-auto text-center">
+                Sprout - The community for plant based people to share their wholefood
+                recipes!
+            </p>
+        </div>
     </div>
-  </div>
 </section>
 
 <!-- recipe card library -->
 <div class="container-fluid">
-  <div class="col-12 mt-3 mb-3">
-    <div class="row">
-    <!-- to make sure there are recipes to display -->
-    {% if recipe_list %}  
-        <!-- to display each recipe in the database -->
-        {% for recipe in recipe_list %}
-        <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
-            <div class="card h-100">
-            <div class="card-body">
-                <div>
-                <!-- displays recipe category -->
-                <p class="card-footer text-center">
-                    Category: {{ recipe.get_category_display }}
-                </p>
-                    <!-- displays recipe image if there is one available -->
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
-                    <div class="image-container">
-                        <!-- displays default image if an image is not uploaded -->
-                        {% if "placeholder" in recipe.featured_image.url %}
-                        <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
-                        {% else %}
-                        <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
-                        {% endif %}
-                    </div>
-                    <!-- displays recipe name -->
-                    <div class="card-title text-center mt-3">
-                        <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
-                    </div>
-                    <div>
-                        <!-- {% if recipe.average_rating %} -->
+    <div class="col-12 mt-3 mb-3">
+        <div class="row">
+            <!-- to make sure there are recipes to display -->
+            {% if recipe_list %}
+            <!-- to display each recipe in the database -->
+            {% for recipe in recipe_list %}
+            <div class="col-sm-6 col-md-4 col-lg-3 mt-3">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div>
+                            <!-- displays recipe category -->
+                            <p class="card-footer text-center">
+                                Category: {{ recipe.get_category_display }}
+                            </p>
+                            <!-- displays recipe image if there is one available -->
+                            <a href="{% url 'recipe_detail' recipe.slug %}" class="recipe-link">
+                                <div class="image-container">
+                                    <!-- displays default image if an image is not uploaded -->
+                                    {% if "placeholder" in recipe.featured_image.url %}
+                                    <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}"
+                                        alt="placeholder image">
+                                    {% else %}
+                                    <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}"
+                                        alt="{{ recipe.recipe_name}}">
+                                    {% endif %}
+                                </div>
+                                <!-- displays recipe name -->
+                                <div class="card-title text-center mt-3">
+                                    <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
+                                </div>
+                                <!-- <div>
                             <p>Rating: {{ recipe.average_rating }}</p>
-                        <!-- {% else %} -->
-                            <!-- <p>No Ratings</p> -->
-                        <!-- {% endif %} -->
+                    </div> -->
+                            </a>
+                        </div>
                     </div>
-                    </a>
-                    </div>
-                </div>
                 </div>
             </div>
             {% endfor %}
             {% else %}
-                <p>There are no recipes to display</p>
-        {% endif %}
-            </div>
+            <!-- displays if there are no recipes -->
+            <p>There are no recipes to display</p>
+            {% endif %}
+        </div>
     </div>
-    </div>
+</div>
 
 <!-- pagination -->
 <nav aria-label="Page navigation">
@@ -85,5 +85,3 @@
 </nav>
 
 {% endblock %}
-
-

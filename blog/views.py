@@ -13,23 +13,25 @@ from django.contrib.auth.decorators import login_required
 
 class RecipeList(generic.ListView):
     """
-    to display a list of all receipes
+    to display a list of all receipes on the home page
+    displays no more than 8 recipes on each page
     """
     Model = Recipe
     template_name = "blog/index.html"
     paginate_by = 8
     queryset = Recipe.objects.filter(approved=True)
-    for recipe in queryset:
-        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
-        recipe.average_rating = round(average_rating*2)/2 if average_rating else None
-        recipe.save()
-        print(recipe)
-        print(recipe.average_rating)
+    # for recipe in queryset:
+    #     average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+    #     recipe.average_rating = round(average_rating*2)/2 if average_rating else None
+        # recipe.save()
+        # print(recipe)
+        # print(recipe.average_rating)
 
 
 class RecipeDetailView(generic.DetailView):
     """
     returns a view of the full recipe
+    gets the average rating of the recipe
     displays comments under the recipe
     shows a form for the user to leave a new comment
     """
@@ -105,6 +107,15 @@ class RecipeDetailView(generic.DetailView):
 
 @login_required 
 def edit_comment(request, slug, comment_id):
+    """
+    allows the comment author to edit their comment
+    checks the form is valid
+    sets the comment approval status to false
+    sets the comment edited statement to true
+    saves the updated comment to the database
+    informs the user if this has been sucessful or not
+    redirects the user back to the recipe detail page
+    """
     instance = Comment.objects.get(id=comment_id)
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST, instance=instance)
@@ -127,6 +138,11 @@ def edit_comment(request, slug, comment_id):
 
 @login_required
 def delete_comment(request, slug, comment_id):
+    """
+    allows the comment author to delete their own comment
+    informs the user if this has been sucessful or not
+    redirects the user back to the recipe detail page 
+    """
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -137,13 +153,20 @@ def delete_comment(request, slug, comment_id):
 
 
 class CreateRecipe(LoginRequiredMixin, CreateView):
+    """
+    takes the user to the create recipe page
+    shows the user a form to add a recipe
+    checks the form is valid
+    assigns the recipe author to be the logged in user
+    informs the user if this has been sucessful or not
+    redirects the user back to the home page 
+    """
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
     success_url = reverse_lazy('home')
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # ingredients = ingredients.split
         messages.success(
             self.request,
             'Recipe submitted and awaiting approval')
@@ -154,6 +177,8 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
 def user_recipes(request):
     """
     return a list of recipes where the logged in user is the author
+    sorts the recipes with the newest recipes forst
+    gets the average rating for each recipe
     """
     user_recipes = Recipe.objects.filter(
         author=request.user).order_by('-created_on')
@@ -171,6 +196,16 @@ def user_recipes(request):
 
 
 class EditRecipe(UserPassesTestMixin, UpdateView):
+    """
+    allows the user to edit a recipe that they are the author of
+    checks the logged in user is the recipe author
+    takes the user to the create recipe page
+        - the form for this is altered to reflect the user is editing a recipe
+    sets the recipe approval status to false
+    saves the updated recipe to the database
+    informs the user if this has been sucessful or not
+    redirects the user back to the user recipes page
+    """
     queryset = Recipe.objects.all()
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
@@ -190,6 +225,14 @@ class EditRecipe(UserPassesTestMixin, UpdateView):
 
 
 class DeleteRecipe(UserPassesTestMixin, DeleteView):
+    """
+    allows the user to delete a recipe that they are the author of
+    checks the logged in user is the recipe author
+    takes the user to the delete recipe page
+    deletes the recipe from the database
+    informs the user if this has been sucessful or not
+    redirects the user back to the user recipes page
+    """
     model = Recipe
     template_name = 'blog/confirm-delete.html'
     contect_object_name = 'recipe'

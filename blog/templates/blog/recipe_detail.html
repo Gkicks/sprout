@@ -1,150 +1,161 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
 
+<!-- displays the detail of the recipe -->
 <div class="container">
-
     <div class="row">
+        <!-- recipe title -->
         <div class="col-12 h1 mt-4 mb-2 detail-title">
             <h1>{{ recipe.recipe_name }}</h1>
         </div>
-    </div>  
-<br>
+    </div>
+    <br>
+    <!-- recipe image -->
     <div class="row">
-    
         <div class="my-auto col-4" id="detail-recipe-img">
             <!-- displays default image if an image is not uploaded -->
             {% if "placeholder" in recipe.featured_image.url %}
             <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
             {% else %}
+            <!-- displays recipe image if there is one available -->
             <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
             {% endif %}
         </div>
-        
+        <!-- average rating of recipe displayed as stars -->
         <div class="col-8">
-        <div>
-            <p  id="average-rating" class="hidden">{{ average_number }}</p>
-        </div>
-
-        <div>
-            {% if not average_number %}
-                <p>There are no ratings for this recipe</p>
-            {% else %}
-            <div class="star-rating">
-                <span id="star-one" class="star"></span>
-                <span id="star-two" class="star"></span>
-                <span id="star-three" class="star"></span>
-                <span id="star-four" class="star"></span>
-                <span id="star-five" class="star"></span>
+            <div>
+                <p id="average-rating" class="hidden">{{ average_number }}</p>
             </div>
-            {% endif %}
+            <div>
+                {% if not average_number %}
+                <!-- displays it there are no ratings for the recipe -->
+                <p>There are no ratings for this recipe</p>
+                {% else %}
+                <!-- displays it there are ratings for the recipe -->
+                <div class="star-rating">
+                    <span id="star-one" class="star"></span>
+                    <span id="star-two" class="star"></span>
+                    <span id="star-three" class="star"></span>
+                    <span id="star-four" class="star"></span>
+                    <span id="star-five" class="star"></span>
+                </div>
+                {% endif %}
+            </div>
+            <br>
+            <!-- form for the user to be able to rate the recipe -->
+            <div>
+                <p>Rate this recipe: </p>
+                <form id="RatingForm" method="POST" action='' enctype="multipart/form-data">
+                    <div>
+                        {% csrf_token %}
+                        {{ rating_form | crispy }}
+                    </div>
+                    <button id="form-submit-button" type="submit" name="rating-submit">Submit Rating</button>
+                </form>
+            </div>
+            <br>
+            <!-- displays how many servings -->
+            <div>
+                <h3>Servings: {{ recipe.servings }}</h3>
+            </div>
         </div>
-        <br>  
+    </div>
+    <br>
+    <!-- displays the ingredients - one ingredient per line if this is how the user has entered it -->
+    <div class="row">
+        <div class="col-12 mt-2 mb-2 detail-title">
+            <h2>Ingredients</h2>
+        </div>
+    </div>
+    <div class="row">
         <div>
-            <p>Rate this recipe: </p>
-           <form id="RatingForm" method="POST" action='' enctype="multipart/form-data">
+            {{ recipe.ingredients | linebreaks }}
+        </div>
+    </div>
+    <!-- displays the method - one method per line if this is how the user has entered it -->
+    <div class="row">
+        <div class="col-12 mt-2 mb-2 detail-title">
+            <h2>Method</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            {{ recipe.method | linebreaksbr }}
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-12 mt-2 mb-2 detail-title">
+            <h3 id="comment-header">Comments</h3>
+        </div>
+    </div>
+    <!-- A form for the user to add a comment -->
+    <div class="row">
+        <div class="col-12">
+            <form id="comment-form" method="POST" action='' enctype="multipart/form-data">
                 <div>
                     {% csrf_token %}
-                    {{ rating_form | crispy }}
+                    {{ comment_form | crispy }}
                 </div>
-                <button id="form-submit-button" type="submit" name="rating-submit">Submit Rating</button>
+                <button id="form-submit-btn" type="submit" name="comment-submit">Submit Comment</button>
             </form>
-        </div> 
-        <br>
-        <div>
-            <h3>Servings: {{ recipe.servings }}</h3>
+            <br><br>
         </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-12 mt-2 mb-2 detail-title">
-        <h2>Ingredients</h2>
-    </div>
-</div>
-<div class="row">
-    <div>
-        {{ recipe.ingredients | linebreaks }}
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 mt-2 mb-2 detail-title">
-        <h2>Method</h2>
-    </div>
-</div>
-<div class="row">    
-    <div>
-        {{ recipe.method | linebreaksbr }}
-    </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-12 mt-2 mb-2 detail-title">
-        <h3 id="comment-header">Comments</h3>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12">
-        <form id="comment-form" method="POST" action='' enctype="multipart/form-data">
-            <div>
-                {% csrf_token %}
-                {{ comment_form | crispy }}
-            </div>
-            <button id="form-submit-btn" type="submit" name="comment-submit">Submit Comment</button>
-        </form>
-        <br><br>
-    </div>
-</div>
-        {% if comments %}
-            {% for comment in comments %}
-            <div class="row">
-            <div class="col-8">
+    <!-- displays a list of comments -->
+    {% if comments %}
+    {% for comment in comments %}
+    <div class="row">
+        <div class="col-8">
             <div class="comment-list">
                 {% if not comment.approved and comment.author == user %}
-                    <p class="faded">Comment awaiting admin approval:</p>
+                <p class="faded">Comment awaiting admin approval:</p>
                 {% endif %}
                 {% if not comment.approved and not comment.author == user %}
-                    <!-- pass -->
+                <!-- pass -->
                 {% else %}
                 <div class="{% if not comment.approved and comment.author == user %}faded{% endif %}">
                     <p id="comment{{comment.id}}">{{ comment.body }}</p>
-                    <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated {{ comment.edited_on }} {% endif %}</p>
-                </div>
-                {% endif %}    
-            </div>
-        </div>
-                {% if user.is_authenticated and comment.author == user %}
-              
-                <div class="col-4">
-                    <div class="text-right">
-                        <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}"><i class="fa-regular fa-trash-can"></i></button>
-                    </div>
+                    <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated {{
+                        comment.edited_on }} {% endif %}</p>
                 </div>
                 {% endif %}
             </div>
-            <hr>
-            {% endfor %}
-        {% else %}
-            <p>There are no comments to display</p>
+        </div>
+        <!-- buttons for the user to edit or delete their own comments -->
+        {% if user.is_authenticated and comment.author == user %}
+        <div class="col-4">
+            <div class="text-right">
+                <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}"><i
+                        class="fa-regular fa-pen-to-square"></i></button>
+                <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}"><i
+                        class="fa-regular fa-trash-can"></i></button>
+            </div>
+        </div>
         {% endif %}
     </div>
+    <hr>
+    {% endfor %}
+    <!-- informs the user if there have been no comments left for that recipe -->
+    {% else %}
+    <p>There are no comments to display</p>
+    {% endif %}
+</div>
 </div>
 </div>
 
 <!-- delete comment modal -->
 <div id="delete-modal" class="modal">
-    <!-- Modal content -->
     <div class="modal-content">
         <p>Are you sure you want to delete this comment?</p>
-        <form id="confirm-delete-btns" method = 'POST'>
+        <form id="confirm-delete-btns" method='POST'>
             {% csrf_token %}
             <button id="confirm-delete">Delete</button>
             <button id="cancel-delete">Cancel</button>
         </form>
     </div>
-  </div>
-
+</div>
 
 {% endblock content %}

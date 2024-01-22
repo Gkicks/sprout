@@ -121,6 +121,7 @@ footer {
     color: var(--grey)
 }
 
+/* for items that are not yet approved */
 .faded {
     font-weight: 100;
     color: var(--pink);
@@ -128,7 +129,6 @@ footer {
 }
 
 /* recipe_detail page */
-
 .detail-title {
     padding: 0;
     color: var(--brown)

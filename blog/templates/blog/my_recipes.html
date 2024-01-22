@@ -3,51 +3,58 @@
 
 <h1 class="col-12 m-3 html-header">My Recipes:</h1>
 
-{
-<!-- recipe card library -->
+<!-- recipe card library - will only display the users recipes -->
 <div class="container">
     {% for recipe in user_recipes %}
     <div class="row h-100">
         <div class="col-md-2 col-3 my-auto text-center">
+            <!-- to display recipe photo -->
             <div class="image-container my-auto" id="my-recipe-img">
                 <!-- displays default image if an image is not uploaded -->
                 {% if "placeholder" in recipe.featured_image.url %}
                 <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
                 {% else %}
+                <!-- displays recipe image if there is one available -->
                 <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
                 {% endif %}
             </div>
         </div>
+        <!-- shows recipe name to maximum of 50 characters -->
         <div class="col-md-3 col-5 my-auto text-wrap my-recipe {% if not recipe.approved %}faded{% endif %}">
             <p>{{ recipe.recipe_name | truncatechars:50 }}</p>
             {% if not recipe.approved %}
-                <p>Awaiting Approval</p>
+            <p>Awaiting Approval</p>
             {% endif %}
         </div>
+        <!-- displays recipe rating -->
         <div class="col-md-2 col-3 my-auto my-recipe {% if not recipe.approved %}faded{% endif %}">
             {% if recipe.average_rating == None %}
-                <p>No Ratings</p>
+            <p>No Ratings</p>
             {% else %}
-                <p>Rating: {{ recipe.average_rating }}</p>
+            <p>Rating: {{ recipe.average_rating }}</p>
             {% endif %}
         </div>
+        <!-- to direct the user to the recipe detail page -->
         <div class="col-auto text-center my-recipe-btn">
             <form action="{% url 'recipe_detail' recipe.slug %}" method="GET">
                 <button class="btn btn-outline-warning">View</button>
             </form>
         </div>
+        <!-- to direct the user to the edit recipe page -->
         <div class="col-auto text-center my-recipe-btn">
             <form action="{% url 'edit_recipe' recipe.slug %}" method="GET">
-            <button class="btn btn-outline-success">Edit</button>
+                <button class="btn btn-outline-success">Edit</button>
             </form>
         </div>
+        <!-- allows the user to delete the recipe -->
         <div class="col-auto text-center my-recipe-btn">
             <form action="{% url 'delete_recipe' recipe.slug %}" method="GET">
-            <button class="btn btn-outline-danger">Delete</button>
+                <button class="btn btn-outline-danger">Delete</button>
             </form>
         </div>
     </div>
-        <hr>
+    <!-- sperates each recipe by a horizontal rule -->
+    <hr>
     {% endfor %}
 </div>
 
