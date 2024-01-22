@@ -41,6 +41,13 @@
                     <div class="card-title text-center mt-3">
                         <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
                     </div>
+                    <div>
+                        <!-- {% if recipe.average_rating %} -->
+                            <p>Rating: {{ recipe.average_rating }}</p>
+                        <!-- {% else %} -->
+                            <!-- <p>No Ratings</p> -->
+                        <!-- {% endif %} -->
+                    </div>
                     </a>
                     </div>
                 </div>

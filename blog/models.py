@@ -40,6 +40,8 @@ class Comment(models.Model):
     body = models.TextField(validators=[MinLengthValidator(3)])
     approved = models.BooleanField(default=False)
     created_on = models.DateTimeField(auto_now_add=True)
+    edited = models.BooleanField(default=False)
+    edited_on = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ["created_on"]

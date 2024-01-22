@@ -18,6 +18,11 @@ const starFour = document.getElementById('star-four')
 const starFive = document.getElementById('star-five')
 
 
+// comment edit
+// const editButtons = document.getElementsByClassName("edit-btn");
+// const commentBody = document.getElementById("comment-body");
+// const commentForm = document.getElementById("comment-form");
+// const submitButton = document.getElementById("form-submit-btn");
 
 // create_recipe page
 window.addEventListener('load', function () {
@@ -101,3 +106,40 @@ window.addEventListener('load', function () {
         }
     }
 })
+
+
+const editButtons = document.getElementsByClassName("edit-btn");
+const commentBody = document.getElementById("id_body");
+const commentForm = document.getElementById("comment-form");
+const submitButton = document.getElementById("form-submit-btn");
+const commentHeader = document.getElementById("comment-header");
+
+
+for (let button of editButtons) {
+    button.addEventListener('click', function() {
+        let commentId = this.getAttribute("data-comment-id")
+        let commentContent = document.getElementById(`comment${commentId}`).innerText;
+        commentBody.value = commentContent
+        submitButton.innerText = "Update"
+        commentForm.setAttribute("action", `edit_comment/${commentId}`)
+        commentHeader.scrollIntoView({behaviour: 'smooth'})
+    }
+        )}
+
+// const editButton = document.getElementById("edit-btn");
+// const commentText = document.getElementById("comment-body");
+// const commentForm = document.getElementById("comment-form");
+// const commentContent = document.getElementById("comment-body");
+
+// const editModal = new bootstrap.Modal(document.getElementById("editModal"));
+// const editButtons = document.getElementsByClassName("btn-delete");
+// const editConfirm = document.getElementById("editConfirm");
+
+
+// for (let button of editButtons) {
+//     button.addEventListener("click", (e) => {
+//         let commentId = e.target.getAttribute("data-instance-id");
+//         editConfirm.href = `edit_comment/${commentId}`;
+//         editModal.show();
+//     });
+// }

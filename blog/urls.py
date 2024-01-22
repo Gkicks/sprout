@@ -11,4 +11,6 @@ urlpatterns = [
          views.EditRecipe.as_view(), name='edit_recipe'),
     path('blog/confirm-delete/<slug>/',
          views.DeleteRecipe.as_view(), name='delete_recipe'),
+    path('<slug>/edit_comment/<int:comment_id>',
+         views.edit_comment, name='edit_comment'),
 ]

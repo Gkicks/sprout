@@ -9,29 +9,22 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.db.models import Avg
 
+
 class RecipeList(generic.ListView):
     """
     to display a list of all receipes
     """
+    Model = Recipe
     template_name = "blog/index.html"
     paginate_by = 8
+    queryset = Recipe.objects.filter(approved=True)
+    for recipe in queryset:
+        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+        recipe.average_rating = round(average_rating*2)/2 if average_rating else None
+        recipe.save()
+        print(recipe)
+        print(recipe.average_rating)
 
-    def get_queryset(self):
-        return Recipe.objects.filter(approved=True)
-
-
-def get_average_number(slug):
-    queryset = Recipe.objects.all()
-    recipe = get_object_or_404(queryset, slug=slug)
-    average_rating = Rating.objects.values().filter(recipe=recipe).aggregate(Avg('rating'))
-    if average_rating['rating__avg'] == 0 or average_rating['rating__avg'] == None:
-        print('no rating')
-        average_number = 0
-        print(average_number)
-        print(type(average_number))
-    else:
-        average_number = round(average_rating['rating__avg'] *2) / 2
-    return average_number
 
 class RecipeDetailView(generic.DetailView):
     """
@@ -45,7 +38,9 @@ class RecipeDetailView(generic.DetailView):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
-        average_number = get_average_number(recipe.slug)
+        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))
+        # gives the average rating to the nearest 0.5
+        average_number = round(average_rating['rating__avg'] *2) / 2
 
         return render(
             request,
@@ -87,7 +82,7 @@ class RecipeDetailView(generic.DetailView):
                 rating.save()
                 messages.success(
                     self.request,
-                    'Thank you for rating this recipe')
+                    'Thank you. Your rating has been submitted')
                 comment_form = CommentForm()
                 rating_form = RatingForm()
                 return HttpResponseRedirect(request.path_info)
@@ -108,6 +103,27 @@ class RecipeDetailView(generic.DetailView):
         )
 
 
+def edit_comment(request, slug, comment_id):
+    instance = Comment.objects.get(id=comment_id)
+    if request.method == "POST":
+        comment_form = CommentForm(data=request.POST, instance=instance)
+        queryset = Recipe.objects.all()
+        recipe = get_object_or_404(queryset, slug=slug)
+        comment = get_object_or_404(Comment, pk=comment_id)
+        if comment_form.is_valid() and comment.author == request.user:
+            comment = comment_form.save(commit=False)
+            comment.recipe = recipe
+            comment.approved = False
+            comment.edited = True
+            comment.save()
+            messages.add_message(request, messages.SUCCESS, 'Comment updated and awaiting approval')
+        else:
+            messages.add_message(request, messages.ERROR,
+                                'Error updating comment')
+
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
 class CreateRecipe(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
     template_name = 'blog/create_recipe.html'
@@ -115,6 +131,7 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        # ingredients = ingredients.split
         messages.success(
             self.request,
             'Recipe submitted and awaiting approval')
