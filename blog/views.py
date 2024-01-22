@@ -38,9 +38,8 @@ class RecipeDetailView(generic.DetailView):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
-        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))
-        # gives the average rating to the nearest 0.5
-        average_number = round(average_rating['rating__avg'] *2) / 2
+        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+        average_number = round(average_rating*2)/2 if average_rating else None
 
         return render(
             request,
