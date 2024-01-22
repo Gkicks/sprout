@@ -1,17 +1,52 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Crete+Round&family=Kanit&display=swap');
+
+/* universal styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'arimo', 'sans-serif';
+    color: var(--dark-grey);
+}
+
+:root {
+    --brown: #8b4513;
+    --pink: #bc8f8f;
+    --pale-pink: #ffe4e1;
+    --sage: #dde6d5;
+    --dark-green: #667B68;
+    --grey: #857f7f;
+    --dark-grey: #222222;
+    --white: #ffffff;
+}
+
+.hidden {
+    height: 0;
+    width: 0;
+    font-size: 0;
+}
+
 /* nav bar */
 #mainNav {
-    background-color: #dde6d5;
+    background-color: var(--sage);
 }
 
 #logo {
-    color: #667b68;
+    color: var(--dark-green);
     font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'kanit', 'sans-serif';
+}
+
+/* footer */
+footer {
+    background-color: var(--dark-green);
+    color: var(--white);
 }
 
 /* landing page image*/
 .hero-image {
     background-image: url("../images/hero-image.webp");
-    width: 100%;
     background-size: cover;
     height: 60vh;
     background-repeat: no-repeat;
@@ -21,22 +56,16 @@
 }
 
 .hero-blurb {
-    background-color: #fceee9;
-    text-align: center;
-    color: #f8d3c5;
+    background-color: var(--pale-pink);
+    opacity: 85%;
     border-radius: 0.25rem;
-    position: absolute;
-    width: 25%;
-    height: 50%;
-    left: 37.5%;
-    top: 25%;
-    padding: 0.25rem;
 }
 
 #hero-tagline {
-    /* text-align: center; */
-    color: #893f04;
-    font-size: xx-large;
+    color: var(--brown);
+    font-size: 1.5rem;
+    opacity: 100%;
+    font-weight: 600;
 }
 
 /* landing page recipe display */
@@ -44,10 +73,19 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
-.card-img {
-    height: 15vw;
-    object-fit: cover;
-    padding-bottom: 3vh;
+.image-container {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+    width: 100%;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 #name-display {
@@ -55,26 +93,57 @@
 }
 
 .recipe-link {
-    color: #893f04;
+    color: var(--brown);
     text-decoration: none;
 }
 
 .recipe-link:hover {
-    color: #667b68;
+    color: var(--dark-green);
     text-decoration: none;
 }
 
 /* pagination */
 .page-link,
 .page-of-text {
-    color: #667b68;
+    color: var(--dark-green);
 }
 
-/* comments */
+/* my recipes page */
+.my-recipe-btn {
+    margin-top: 5%;
+}
+
+.html-header {
+    color: var(--brown);    
+}
+
+.my-recipe {
+    color: var(--grey)
+}
+
+/* for items that are not yet approved */
 .faded {
-    font-weight: lighter;
+    font-weight: 100;
+    color: var(--pink);
+    font-style: italic
 }
 
-#my-recipe-img>.card-img {
-    height: 5vw;
+/* recipe_detail page */
+.detail-title {
+    padding: 0;
+    color: var(--brown)
+}
+
+.comment-list {
+    word-wrap: break-word
+}
+
+.star-rating {
+    font-size: 2rem;
+    color: var(--pink);
+}
+
+/* media queries */
+@media (max-width: 435px){
+    .form-control {font-size: 0.5rem;}
 }
