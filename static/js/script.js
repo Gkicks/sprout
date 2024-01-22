@@ -18,11 +18,20 @@ const starFour = document.getElementById('star-four')
 const starFive = document.getElementById('star-five')
 
 
-// comment edit
-// const editButtons = document.getElementsByClassName("edit-btn");
-// const commentBody = document.getElementById("comment-body");
-// const commentForm = document.getElementById("comment-form");
-// const submitButton = document.getElementById("form-submit-btn");
+// edit comment
+const editButtons = document.getElementsByClassName("edit-btn");
+const commentBody = document.getElementById("id_body");
+const commentForm = document.getElementById("comment-form");
+const submitButton = document.getElementById("form-submit-btn");
+const commentHeader = document.getElementById("comment-header");
+
+
+// delete comment
+const deleteModal = document.getElementById("delete-modal");
+const deleteButtons = document.getElementsByClassName("delete-btn");
+const confirmDelete = document.getElementById("confirm-delete");
+const cancelDelete = document.getElementById("cancel-delete");
+const confirmDeleteBtns = document.getElementById("confirm-delete-btns")
 
 // create_recipe page
 window.addEventListener('load', function () {
@@ -108,11 +117,7 @@ window.addEventListener('load', function () {
 })
 
 
-const editButtons = document.getElementsByClassName("edit-btn");
-const commentBody = document.getElementById("id_body");
-const commentForm = document.getElementById("comment-form");
-const submitButton = document.getElementById("form-submit-btn");
-const commentHeader = document.getElementById("comment-header");
+
 
 
 for (let button of editButtons) {
@@ -126,20 +131,20 @@ for (let button of editButtons) {
     }
         )}
 
-// const editButton = document.getElementById("edit-btn");
-// const commentText = document.getElementById("comment-body");
-// const commentForm = document.getElementById("comment-form");
-// const commentContent = document.getElementById("comment-body");
 
-// const editModal = new bootstrap.Modal(document.getElementById("editModal"));
-// const editButtons = document.getElementsByClassName("btn-delete");
-// const editConfirm = document.getElementById("editConfirm");
+// delete comment
+for(let button of deleteButtons) {
+    button.addEventListener("click", function() {
+        let commentId = this.getAttribute("data-comment-id")
+        confirmDeleteBtns.setAttribute("action", `delete_comment/${commentId}`)
+        deleteModal.style.display = "block"
+    })
+}
 
+cancelDelete.addEventListener("click", function() {
+    deleteModal.style.display = "None"
+})
 
-// for (let button of editButtons) {
-//     button.addEventListener("click", (e) => {
-//         let commentId = e.target.getAttribute("data-instance-id");
-//         editConfirm.href = `edit_comment/${commentId}`;
-//         editModal.show();
-//     });
-// }
+confirmDelete.addEventListener("click", function() {
+    deleteModal.style.display = "None"
+})

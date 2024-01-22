@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.db.models import Avg
+from django.contrib.auth.decorators import login_required
 
 
 class RecipeList(generic.ListView):
@@ -102,6 +103,7 @@ class RecipeDetailView(generic.DetailView):
         )
 
 
+@login_required 
 def edit_comment(request, slug, comment_id):
     instance = Comment.objects.get(id=comment_id)
     if request.method == "POST":
@@ -119,6 +121,17 @@ def edit_comment(request, slug, comment_id):
         else:
             messages.add_message(request, messages.ERROR,
                                 'Error updating comment')
+
+    return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
+
+@login_required
+def delete_comment(request, slug, comment_id):
+    queryset = Recipe.objects.all()
+    recipe = get_object_or_404(queryset, slug=slug)
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted')
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
