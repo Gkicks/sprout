@@ -10,13 +10,13 @@ const formTitle = document.getElementById("form-title");
 const formSubmit = document.getElementById("form-submit-button");
 
 // star ratings
-const rating = document.getElementById('average-rating')
-const stars = document.getElementsByClassName('star')
-const starOne = document.getElementById('star-one')
-const starTwo = document.getElementById('star-two')
-const starThree = document.getElementById('star-three')
-const starFour = document.getElementById('star-four')
-const starFive = document.getElementById('star-five')
+const rating = document.getElementById('average-rating');
+const stars = document.getElementsByClassName('star');
+const starOne = document.getElementById('star-one');
+const starTwo = document.getElementById('star-two');
+const starThree = document.getElementById('star-three');
+const starFour = document.getElementById('star-four');
+const starFive = document.getElementById('star-five');
 
 // edit comment
 const editButtons = document.getElementsByClassName("edit-btn");
@@ -30,7 +30,7 @@ const deleteModal = document.getElementById("delete-modal");
 const deleteButtons = document.getElementsByClassName("delete-btn");
 const confirmDelete = document.getElementById("confirm-delete");
 const cancelDelete = document.getElementById("cancel-delete");
-const confirmDeleteBtns = document.getElementById("confirm-delete-btns")
+const confirmDeleteBtns = document.getElementById("confirm-delete-btns");
 
 
 // create_recipe page
@@ -63,67 +63,67 @@ window.addEventListener('load', function () {
 // adds eventlistener to get the rating of a recipe
 // displays stars showing this rating
 window.addEventListener('load', function () {
-    let averageRating = rating.innerText
+    let averageRating = rating.innerText;
     if (averageRating == 1) {
         for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star') 
+            star.classList.add('fa-regular', 'fa-star'); 
         }
-        starOne.classList = 'star fa-solid fa-star'
+        starOne.classList = 'star fa-solid fa-star';
     }
     else if (averageRating == 1.5) {
         for (let star of stars) {
-            star.className = 'fa-regular, fa-star' 
+            star.className = 'fa-regular, fa-star'; 
         }
-        starOne.className = 'star fa-solid fa-star'
-        starTwo.className = ' star fa-solid fa-star-half-stroke'
+        starOne.className = 'star fa-solid fa-star';
+        starTwo.className = ' star fa-solid fa-star-half-stroke';
     }
     else if (averageRating == 2) {
         for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star') 
+            star.classList.add('fa-regular', 'fa-star');
         }
-        starOne.className = 'star fa-solid fa-star'
-        starTwo.className = 'star fa-solid fa-star'
+        starOne.className = 'star fa-solid fa-star';
+        starTwo.className = 'star fa-solid fa-star';
     }
     else if (averageRating == 2.5) {
         for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star') 
+            star.classList.add('fa-regular', 'fa-star'); 
         }
-        starOne.className = 'star fa-solid fa-star'
-        starTwo.className = 'star fa-solid fa-star'
-        starThree.className = 'star fa-solid fa-star-half-stroke'
+        starOne.className = 'star fa-solid fa-star';
+        starTwo.className = 'star fa-solid fa-star';
+        starThree.className = 'star fa-solid fa-star-half-stroke';
     }
     else if (averageRating == 3) {
         for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star') 
+            star.classList.add('fa-solid', 'fa-star'); 
         }
-        starFour.className = 'start fa-regular fa-star'
-        starFive.className = 'start fa-regular fa-star'
+        starFour.className = 'start fa-regular fa-star';
+        starFive.className = 'start fa-regular fa-star';
     }
     else if (averageRating == 3.5) {
         for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star') 
+            star.classList.add('fa-solid', 'fa-star'); 
         }
-        starFour.className = 'star fa-solid fa-star-half-stroke'
-        starFive.className = 'start fa-regular fa-star'
+        starFour.className = 'star fa-solid fa-star-half-stroke';
+        starFive.className = 'start fa-regular fa-star';
     }
     else if (averageRating == 4) {
         for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star') 
+            star.classList.add('fa-solid', 'fa-star'); 
         }
-        starFive.className = 'start fa-regular fa-star'
+        starFive.className = 'start fa-regular fa-star';
     }
     else if (averageRating == 4.5) {
         for (let star of stars) {
-            star.classList.add('fa', 'fa-star') 
+            star.classList.add('fa', 'fa-star'); 
         }
-        starFive.className = 'star fa-solid fa-star-half-stroke'
+        starFive.className = 'star fa-solid fa-star-half-stroke';
     }
     else if (averageRating == 5) {
         for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star') 
+            star.classList.add('fa-solid', 'fa-star'); 
         }
     }
-})
+});
 
 
 // edit comment
@@ -136,14 +136,14 @@ window.addEventListener('load', function () {
 // scrolls back to the comment-form so it is there for the user to update
 for (let button of editButtons) {
     button.addEventListener('click', function() {
-        let commentId = this.getAttribute("data-comment-id")
+        let commentId = this.getAttribute("data-comment-id");
         let commentContent = document.getElementById(`comment${commentId}`).innerText;
-        commentBody.value = commentContent
-        submitButton.innerText = "Update"
-        commentForm.setAttribute("action", `edit_comment/${commentId}`)
-        commentHeader.scrollIntoView({behaviour: 'smooth'})
+        commentBody.value = commentContent;
+        submitButton.innerText = "Update";
+        commentForm.setAttribute("action", `edit_comment/${commentId}`);
+        commentHeader.scrollIntoView({behaviour: 'smooth'});
     }
-        )}
+        );}
 
 
 // delete comment
@@ -153,20 +153,20 @@ for (let button of editButtons) {
 // displays the delete modal
 for(let button of deleteButtons) {
     button.addEventListener("click", function() {
-        let commentId = this.getAttribute("data-comment-id")
-        confirmDeleteBtns.setAttribute("action", `delete_comment/${commentId}`)
-        deleteModal.style.display = "block"
-    })
+        let commentId = this.getAttribute("data-comment-id");
+        confirmDeleteBtns.setAttribute("action", `delete_comment/${commentId}`);
+        deleteModal.style.display = "block";
+    });
 }
 
 // adds eventlisteners to the cancel-delete button
 // hides the delete modal when this is pressed
 cancelDelete.addEventListener("click", function() {
-    deleteModal.style.display = "None"
-})
+    deleteModal.style.display = "None";
+});
 
 // adds eventlisteners to the confirm-delete button
 // hides the delete modal when this is pressed
 confirmDelete.addEventListener("click", function() {
-    deleteModal.style.display = "None"
-})
+    deleteModal.style.display = "None";
+});
