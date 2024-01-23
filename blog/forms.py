@@ -9,13 +9,11 @@ class RecipeForm(forms.ModelForm):
         and method on a new line
     Class to decrease the size of the placeholder on screens less than 435px
     """
-    ingredients = forms.CharField(widget=forms.TextInput(attrs={
+    ingredients = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Add one ingredient per line',
-        'class': 'form-control'
         }))
-    method = forms.CharField(widget=forms.TextInput(attrs={
+    method = forms.CharField(widget=forms.Textarea(attrs={
         'placeholder': 'Add a new line for each method',
-        'class': 'form-control'
         }))    
     class Meta:
         model = Recipe
