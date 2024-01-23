@@ -23,9 +23,9 @@ class RecipeList(generic.ListView):
     # for recipe in queryset:
     #     average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
     #     recipe.average_rating = round(average_rating*2)/2 if average_rating else None
-        # recipe.save()
-        # print(recipe)
-        # print(recipe.average_rating)
+    #     recipe.save()
+    #     print(recipe)
+    #     print(recipe.average_rating)
 
 
 class RecipeDetailView(generic.DetailView):

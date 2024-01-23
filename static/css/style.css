@@ -143,6 +143,11 @@ footer {
     color: var(--pink);
 }
 
+hr:last-child {
+    /* color: blue; */
+    display: none;
+  }
+
 /* media queries */
 @media (max-width: 435px){
     .form-control {font-size: 0.5rem;}

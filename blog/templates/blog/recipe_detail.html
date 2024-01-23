@@ -105,21 +105,20 @@
         </div>
     </div>
     <!-- displays a list of comments -->
-    {% if comments %}
+    <div class="comment-container">
     {% for comment in comments %}
-    <div class="row">
+    {% if comment.approved or comment.author == user %}
+    <div class="row comment-section">
         <div class="col-8">
             <div class="comment-list">
                 {% if not comment.approved and comment.author == user %}
                 <p class="faded">Comment awaiting admin approval:</p>
                 {% endif %}
-                {% if not comment.approved and not comment.author == user %}
-                <!-- pass -->
-                {% else %}
+                {% if comment.approved or comment.author == user %}
                 <div class="{% if not comment.approved and comment.author == user %}faded{% endif %}">
                     <p id="comment{{comment.id}}">{{ comment.body }}</p>
-                    <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated {{
-                        comment.edited_on }} {% endif %}</p>
+                    <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated 
+                        {{ comment.edited_on }} {{ comment.id }} {% endif %}</p>
                 </div>
                 {% endif %}
             </div>
@@ -128,24 +127,25 @@
         {% if user.is_authenticated and comment.author == user %}
         <div class="col-4">
             <div class="text-right">
-                <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}"><i
+                <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}" aria-label="edit-button"><i
                         class="fa-regular fa-pen-to-square"></i></button>
-                <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}"><i
+                <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}" aria-label="delete-button"><i
                         class="fa-regular fa-trash-can"></i></button>
             </div>
         </div>
         {% endif %}
     </div>
     <hr>
+    {% endif %}
     {% endfor %}
     <!-- informs the user if there have been no comments left for that recipe -->
-    {% else %}
+    {% if not comments %}
+    <div>
     <p>There are no comments to display</p>
-    {% endif %}
 </div>
+{% endif %}
 </div>
-</div>
-
+<br>
 <!-- delete comment modal -->
 <div id="delete-modal" class="modal">
     <div class="modal-content">
@@ -156,6 +156,7 @@
             <button id="cancel-delete">Cancel</button>
         </form>
     </div>
+</div>
 </div>
 
 {% endblock content %}

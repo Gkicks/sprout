@@ -13,7 +13,7 @@ class RecipeAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ['author', 'body', 'created_on', 'approved']
+    list_display = ['author', 'body', 'recipe', 'created_on', 'approved']
 
 
 @admin.register(Rating)

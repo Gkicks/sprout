@@ -170,3 +170,25 @@ cancelDelete.addEventListener("click", function() {
 confirmDelete.addEventListener("click", function() {
     deleteModal.style.display = "None";
 });
+
+
+// to add a label to the comment form and give it a class of sr-only
+const commentFormWrapper = document.getElementById("div_id_body")
+document.addEventListener("DOMContentLoaded", function() {
+    let commentLabel = document.createElement('label')
+    commentFormWrapper.insertBefore(commentLabel, commentFormWrapper.firstChild);
+    commentLabel.htmlFor = ('id_body')
+    commentLabel.classList.add('sr-only')
+    commentLabel.innerText = 'Comment'
+})
+
+
+// to add a label to the comment form and give it a class of sr-only
+const ratingFormWrapper = document.getElementById("div_id_rating")
+document.addEventListener("DOMContentLoaded", function() {
+    let ratingLabel = document.createElement('label')
+    ratingFormWrapper.insertBefore(ratingLabel, ratingFormWrapper.firstChild);
+    ratingLabel.htmlFor = ('id_rating')
+    ratingLabel.classList.add('sr-only')
+    ratingLabel.innerText = 'Rating'
+})

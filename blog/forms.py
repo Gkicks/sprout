@@ -30,7 +30,7 @@ class CommentForm(forms.ModelForm):
     Placeholder to inform the user what the form is for
     """
     body = forms.CharField(label="", widget=forms.TextInput(attrs={
-        'placeholder': 'Leave a comment'
+        'placeholder': 'Leave a comment',
     }))
     class Meta:
         model = Comment
