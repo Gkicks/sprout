@@ -85,7 +85,7 @@
             {{ recipe.method | linebreaksbr }}
         </div>
     </div>
-    <br>
+    <br>    
     <div class="row">
         <div class="col-12 mt-2 mb-2 detail-title">
             <h3 id="comment-header">Comments</h3>
@@ -94,7 +94,7 @@
     <!-- A form for the user to add a comment -->
     <div class="row">
         <div class="col-12">
-            <form id="comment-form" method="POST" action='' enctype="multipart/form-data">
+            <form id="comment-form" method="POST" enctype="multipart/form-data">
                 <div>
                     {% csrf_token %}
                     {{ comment_form | crispy }}

@@ -12,7 +12,7 @@ body {
 :root {
     --brown: #8b4513;
     --pink: #bc8f8f;
-    --pale-pink: #ffe4e1;
+    --pale-pink: #d9bfbf;
     --sage: #dde6d5;
     --dark-green: #667B68;
     --grey: #857f7f;
@@ -49,6 +49,7 @@ footer {
     background-image: url("../images/hero-image.webp");
     background-size: cover;
     height: 60vh;
+    /* width: 100vw; */
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
@@ -62,7 +63,7 @@ footer {
 }
 
 #hero-tagline {
-    color: var(--brown);
+    color: var(--dark-green);
     font-size: 1.5rem;
     opacity: 100%;
     font-weight: 600;
@@ -84,8 +85,10 @@ footer {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    /* width: 100%; */
+    /* height: 100%; */
+    height: 300px;
+    width: 300px;
 }
 
 #name-display {
@@ -123,7 +126,7 @@ footer {
 
 /* for items that are not yet approved */
 .faded {
-    font-weight: 100;
+    font-weight: 300;
     color: var(--pink);
     font-style: italic
 }
@@ -144,11 +147,22 @@ footer {
 }
 
 hr:last-child {
-    /* color: blue; */
     display: none;
   }
 
-/* media queries */
+/* create recipe page */
+
+#form-title {
+    color: var(--brown);
+}
+
+.form-control::-webkit-file-upload-button, #form-submit-button {
+    background-color: var(--pale-pink);
+    border-radius: 0.25rem
+}
+
+
+  /* media queries */
 @media (max-width: 435px){
     .form-control {font-size: 0.5rem;}
 }
