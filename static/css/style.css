@@ -63,7 +63,7 @@ footer {
 }
 
 #hero-tagline {
-    color: var(--dark-green);
+    color: var(--brown);
     font-size: 1.5rem;
     opacity: 100%;
     font-weight: 600;
@@ -166,6 +166,19 @@ hr:last-child {
 .form-control::-webkit-file-upload-button, #form-submit-button {
     background-color: var(--pale-pink);
     border-radius: 0.25rem
+}
+
+
+/* messages */
+.messages {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 3rem;
+    padding-top: 3rem;
+    padding-left: 5rem;
+    font-size: 2rem;
+    list-style-type: none;
+    background-color: var(--pale-pink);
 }
 
 
