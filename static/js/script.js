@@ -52,79 +52,82 @@ window.addEventListener('load', function () {
 
 // Adds eventlistener to check if the page has 'Page 1' on it when loaded
 // If page is page 1 displays the hero image
-window.addEventListener('load', function () {
+if(page) {
+    window.addEventListener('load', function () {
     if (page[0].textContent.includes('Page 1')) {
         heroSection.classList.remove('hidden');
-    }
-});
+        }
+    });
+}
 
 // all html pages
 
 // adds eventlistener to get the rating of a recipe
 // displays stars showing this rating
-window.addEventListener('load', function () {
-    let averageRating = rating.innerText;
-    if (averageRating == 1) {
-        for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star'); 
+if(rating) {
+    document.addEventListener('DOMContentLoaded', function () {
+        let averageRating = rating.innerText;
+        if (averageRating == 1) {
+            for (let star of stars) {
+                star.classList.add('fa-regular', 'fa-star'); 
+            }
+            starOne.classList = 'star fa-solid fa-star';
         }
-        starOne.classList = 'star fa-solid fa-star';
-    }
-    else if (averageRating == 1.5) {
-        for (let star of stars) {
-            star.className = 'fa-regular, fa-star'; 
+        else if (averageRating == 1.5) {
+            for (let star of stars) {
+                star.className = 'fa-regular, fa-star'; 
+            }
+            starOne.className = 'star fa-solid fa-star';
+            starTwo.className = ' star fa-solid fa-star-half-stroke';
         }
-        starOne.className = 'star fa-solid fa-star';
-        starTwo.className = ' star fa-solid fa-star-half-stroke';
-    }
-    else if (averageRating == 2) {
-        for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star');
+        else if (averageRating == 2) {
+            for (let star of stars) {
+                star.classList.add('fa-regular', 'fa-star');
+            }
+            starOne.className = 'star fa-solid fa-star';
+            starTwo.className = 'star fa-solid fa-star';
         }
-        starOne.className = 'star fa-solid fa-star';
-        starTwo.className = 'star fa-solid fa-star';
-    }
-    else if (averageRating == 2.5) {
-        for (let star of stars) {
-            star.classList.add('fa-regular', 'fa-star'); 
+        else if (averageRating == 2.5) {
+            for (let star of stars) {
+                star.classList.add('fa-regular', 'fa-star'); 
+            }
+            starOne.className = 'star fa-solid fa-star';
+            starTwo.className = 'star fa-solid fa-star';
+            starThree.className = 'star fa-solid fa-star-half-stroke';
         }
-        starOne.className = 'star fa-solid fa-star';
-        starTwo.className = 'star fa-solid fa-star';
-        starThree.className = 'star fa-solid fa-star-half-stroke';
-    }
-    else if (averageRating == 3) {
-        for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star'); 
+        else if (averageRating == 3) {
+            for (let star of stars) {
+                star.classList.add('fa-solid', 'fa-star'); 
+            }
+            starFour.className = 'start fa-regular fa-star';
+            starFive.className = 'start fa-regular fa-star';
         }
-        starFour.className = 'start fa-regular fa-star';
-        starFive.className = 'start fa-regular fa-star';
-    }
-    else if (averageRating == 3.5) {
-        for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star'); 
+        else if (averageRating == 3.5) {
+            for (let star of stars) {
+                star.classList.add('fa-solid', 'fa-star'); 
+            }
+            starFour.className = 'star fa-solid fa-star-half-stroke';
+            starFive.className = 'start fa-regular fa-star';
         }
-        starFour.className = 'star fa-solid fa-star-half-stroke';
-        starFive.className = 'start fa-regular fa-star';
-    }
-    else if (averageRating == 4) {
-        for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star'); 
+        else if (averageRating == 4) {
+            for (let star of stars) {
+                star.classList.add('fa-solid', 'fa-star'); 
+            }
+            starFive.className = 'start fa-regular fa-star';
         }
-        starFive.className = 'start fa-regular fa-star';
-    }
-    else if (averageRating == 4.5) {
-        for (let star of stars) {
-            star.classList.add('fa', 'fa-star'); 
+        else if (averageRating == 4.5) {
+            for (let star of stars) {
+                star.classList.add('fa', 'fa-star'); 
+            }
+            starFive.className = 'star fa-solid fa-star-half-stroke';
         }
-        starFive.className = 'star fa-solid fa-star-half-stroke';
-    }
-    else if (averageRating == 5) {
-        for (let star of stars) {
-            star.classList.add('fa-solid', 'fa-star'); 
+        else if (averageRating == 5) {
+            for (let star of stars) {
+                star.classList.add('fa-solid', 'fa-star'); 
+            }
         }
-    }
-});
-
+    });
+}
 
 // edit comment
 
@@ -161,34 +164,40 @@ for(let button of deleteButtons) {
 
 // adds eventlisteners to the cancel-delete button
 // hides the delete modal when this is pressed
-cancelDelete.addEventListener("click", function() {
-    deleteModal.style.display = "None";
-});
+if(deleteModal) {
+    cancelDelete.addEventListener("click", function() {
+        deleteModal.style.display = "None";
+    });
+}
 
 // adds eventlisteners to the confirm-delete button
 // hides the delete modal when this is pressed
-confirmDelete.addEventListener("click", function() {
-    deleteModal.style.display = "None";
-});
-
+if (confirmDelete) {
+    confirmDelete.addEventListener("click", function() {
+        deleteModal.style.display = "None";
+    });
+}
 
 // to add a label to the comment form and give it a class of sr-only
 const commentFormWrapper = document.getElementById("div_id_body")
-document.addEventListener("DOMContentLoaded", function() {
-    let commentLabel = document.createElement('label')
-    commentFormWrapper.insertBefore(commentLabel, commentFormWrapper.firstChild);
-    commentLabel.htmlFor = ('id_body')
-    commentLabel.classList.add('sr-only')
-    commentLabel.innerText = 'Comment'
-})
-
+if(commentFormWrapper) {
+    document.addEventListener("DOMContentLoaded", function() {
+        let commentLabel = document.createElement('label')
+        commentFormWrapper.insertBefore(commentLabel, commentFormWrapper.firstChild);
+        commentLabel.htmlFor = ('id_body')
+        commentLabel.classList.add('sr-only')
+        commentLabel.innerText = 'Comment'
+    })
+}
 
 // to add a label to the comment form and give it a class of sr-only
 const ratingFormWrapper = document.getElementById("div_id_rating")
-document.addEventListener("DOMContentLoaded", function() {
-    let ratingLabel = document.createElement('label')
-    ratingFormWrapper.insertBefore(ratingLabel, ratingFormWrapper.firstChild);
-    ratingLabel.htmlFor = ('id_rating')
-    ratingLabel.classList.add('sr-only')
-    ratingLabel.innerText = 'Rating'
-})
+if(ratingFormWrapper) {
+    document.addEventListener("DOMContentLoaded", function() {
+        let ratingLabel = document.createElement('label')
+        ratingFormWrapper.insertBefore(ratingLabel, ratingFormWrapper.firstChild);
+        ratingLabel.htmlFor = ('id_rating')
+        ratingLabel.classList.add('sr-only')
+        ratingLabel.innerText = 'Rating'
+    })
+}
