@@ -52,7 +52,7 @@ window.addEventListener('load', function () {
 
 // Adds eventlistener to check if the page has 'Page 1' on it when loaded
 // If page is page 1 displays the hero image
-if(page) {
+if(heroSection) {
     window.addEventListener('load', function () {
     if (page[0].textContent.includes('Page 1')) {
         heroSection.classList.remove('hidden');
