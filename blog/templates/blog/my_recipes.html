@@ -9,10 +9,10 @@
     <div class="row h-100">
         <div class="col-md-2 col-3 my-auto text-center">
             <!-- to display recipe photo -->
-            <div class="image-container my-auto" id="my-recipe-img">
+            <div class="image-container my-auto my-recipe-img">
                 <!-- displays default image if an image is not uploaded -->
                 {% if "placeholder" in recipe.featured_image.url %}
-                <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
+                <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="{{ recipe.recipe_name}}">
                 {% else %}
                 <!-- displays recipe image if there is one available -->
                 <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">

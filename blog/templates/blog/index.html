@@ -4,10 +4,10 @@
 <section id="hero-section" class="container-fluid hidden">
     <div class="row hero-image">
         <div class="col-8 col-sm-6 col-md-4 offset-2 offset-sm-3 offset-md-4 p-4 my-auto hero-blurb">
-            <p id="hero-tagline" class="my-auto text-center">
+            <h1 id="hero-tagline" class="my-auto text-center">
                 Sprout - The community for plant based people to share their wholefood
                 recipes!
-            </p>
+            </h1>
         </div>
     </div>
 </section>
@@ -34,7 +34,7 @@
                                     <!-- displays default image if an image is not uploaded -->
                                     {% if "placeholder" in recipe.featured_image.url %}
                                     <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}"
-                                        alt="placeholder image">
+                                        alt="{{ recipe.recipe_name}}">
                                     {% else %}
                                     <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}"
                                         alt="{{ recipe.recipe_name}}">
@@ -42,7 +42,7 @@
                                 </div>
                                 <!-- displays recipe name -->
                                 <div class="card-title text-center mt-3">
-                                    <h1 id="name-display">{{ recipe.recipe_name | truncatechars:50 }}</h1>
+                                    <h1 class="name-display">{{ recipe.recipe_name | truncatechars:25 }}</h1>
                                 </div>
                                 <!-- <div>
                             <p>Rating: {{ recipe.average_rating }}</p>

@@ -115,7 +115,7 @@ footer {
     /* width: 300px; */
 }
 
-#name-display {
+.name-display {
     font-size: x-large
 }
 
@@ -230,6 +230,15 @@ hr:last-child {
 footer h2 {
     font-size: 16px;
 }
+
+
+/* error pages */
+
+.error-paragraph {
+    font-size: 28px;
+    margin: 20px;
+}
+
 
 
   /* media queries */

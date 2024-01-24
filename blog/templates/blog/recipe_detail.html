@@ -17,7 +17,7 @@
         <div class="my-auto col-4" id="detail-recipe-img">
             <!-- displays default image if an image is not uploaded -->
             {% if "placeholder" in recipe.featured_image.url %}
-            <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="placeholder image">
+            <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="{{ recipe.recipe_name}}">
             {% else %}
             <!-- displays recipe image if there is one available -->
             <img class="card-img img-fluid" src=" {{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name}}">
@@ -47,7 +47,7 @@
             <!-- form for the user to be able to rate the recipe -->
             <div>
                 <p>Rate this recipe: </p>
-                <form id="RatingForm" method="POST" action='' enctype="multipart/form-data">
+                <form id="RatingForm" method="POST" enctype="multipart/form-data">
                     <div>
                         {% csrf_token %}
                         {{ rating_form | crispy }}
