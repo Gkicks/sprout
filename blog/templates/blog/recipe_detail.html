@@ -8,7 +8,7 @@
     <div class="row">
         <!-- recipe title -->
         <div class="col-12 h1 mt-4 mb-2 detail-title">
-            <h1>{{ recipe.recipe_name }}</h1>
+            <h1 id="recipe-detail-title">{{ recipe.recipe_name }}</h1>
         </div>
     </div>
     <br>
@@ -31,7 +31,7 @@
             <div>
                 {% if not average_number %}
                 <!-- displays it there are no ratings for the recipe -->
-                <p>There are no ratings for this recipe</p>
+                <p id="no-rating-paragraph">There are no ratings for this recipe</p>
                 {% else %}
                 <!-- displays it there are ratings for the recipe -->
                 <div class="star-rating">
@@ -141,7 +141,7 @@
     <!-- informs the user if there have been no comments left for that recipe -->
     {% if not comments %}
     <div>
-    <p>There are no comments to display</p>
+    <p id="no-comments-paragraph">There are no comments to display</p>
 </div>
 {% endif %}
 </div>

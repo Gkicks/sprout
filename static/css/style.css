@@ -153,6 +153,14 @@ footer {
     color: var(--pink);
 }
 
+#recipe-detail-title {
+    font-size: 4rem;
+}
+
+#no-rating-paragraph, #no-comments-paragraph {
+    font-size: 1.75rem;
+}
+
 hr:last-child {
     display: none;
   }
