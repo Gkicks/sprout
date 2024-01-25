@@ -1,16 +1,15 @@
 {% extends "base.html" %} {% load i18n %} {% load account socialaccount %} 
 {% block head_title %}{% trans "Sign In" %}{% endblock %} {% block content %}
 
-<div class="container">
+<div class="container low-content-page" id="sign-in">
   <div class="row">
     <div class="col-md-8 mt-3 offset-md-2">
-      <h3>{% trans "Sign In" %}</h3>
+      <h1 class="allauth-header mb-4">{% trans "Sign In" %}</h1>
 
       <p>
-        {% blocktrans %}Welcome back to the code|star blog. To leave a comment
-        or like a post, please log in. If you have not created an account yet,
-        then
-        <a class="link" href="{{ signup_url }}">sign up</a>
+        {% blocktrans %}Welcome back to Sprout! Please log in to post a recipe or leave a comment. If you have not created an account yet,
+        then please
+        <a class="link" href="{{ signup_url }}"><em><strong>sign up</strong></em></a>
         first.{% endblocktrans %}
       </p>
     </div>
@@ -25,7 +24,7 @@
           value="{{ redirect_field_value }}"
         />
         {% endif %}
-        <button class="btn btn-signup right" type="submit">
+        <button class="btn btn-outline-success" type="submit">
           {% trans "Sign In" %}
         </button>
       </form>

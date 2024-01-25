@@ -202,11 +202,11 @@ hr:last-child {
 
 
 
-#recipe-cancel-delete {
+.recipe-cancel-delete {
     color: #145222;
 }
 
-#recipe-cancel-delete:hover {
+.recipe-cancel-delete:hover {
     color: #ffffff;
     text-decoration: none;
 }
@@ -240,6 +240,24 @@ footer h2 {
 }
 
 
+/* allauth */
+
+#sign-in {
+    padding-top: 2rem;    
+}
+
+.link {
+    color: #145222;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: var(--pink);
+}
+
+.allauth-header {
+    color: var(--brown);
+}
 
   /* media queries */
 @media (max-width: 435px){
