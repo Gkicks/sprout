@@ -118,7 +118,7 @@
                 <div class="{% if not comment.approved and comment.author == user %}faded{% endif %}">
                     <p id="comment{{comment.id}}">{{ comment.body }}</p>
                     <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated 
-                        {{ comment.edited_on }} {{ comment.id }} {% endif %}</p>
+                        {{ comment.edited_on }} {% endif %}</p>
                 </div>
                 {% endif %}
             </div>

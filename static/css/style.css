@@ -196,7 +196,7 @@ hr:last-child {
     color: var(--brown);
 }
 
-#id_featured_image::file-selector-button, #form-submit-button {
+#id_featured_image::file-selector-button, #form-submit-button, #form-submit-btn {
     background-color: var(--pale-pink);
     border-radius: 0.25rem
 }
