@@ -24,8 +24,8 @@ body {
     height: 0;
     width: 0;
     font-size: 0;
+    display: None;
 }
-
 
 .btn-outline-success {
     color: #145222;
@@ -37,11 +37,13 @@ body {
     border-color: #240032;
 }
 
-
 .low-content-page {
     height: calc(100vh - 274px);
     padding-top: 5rem;
 }
+
+
+
 
 /* nav bar */
 #mainNav {
@@ -55,18 +57,23 @@ body {
     font-family: 'kanit', 'sans-serif';
 }
 
+
 /* footer */
 footer {
     background-color: var(--dark-green);
     color: var(--white);
 }
 
+footer h2 {
+    font-size: 16px;
+}
+
+
 /* landing page image*/
 .hero-image {
     background-image: url("../images/hero-image.webp");
     background-size: cover;
     height: 60vh;
-    /* width: 100vw; */
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
@@ -86,6 +93,7 @@ footer {
     font-weight: 600;
 }
 
+
 /* landing page recipe display */
 .card-footer {
     border-bottom: 1px solid rgba(0, 0, 0, 0.125);
@@ -97,22 +105,14 @@ footer {
     overflow: hidden;
     width: 100%;
     height: auto;
-    /* padding-top: calc(100% * (100 / 900)); */
 }
 
 .image-container img {
-    /* position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; */
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* height: 300px; */
-    /* width: 300px; */
 }
 
 .name-display {
@@ -135,6 +135,7 @@ footer {
     color: var(--dark-green);
 }
 
+
 /* my recipes page */
 .my-recipe-btn {
     margin-top: 5%;
@@ -148,12 +149,11 @@ footer {
     color: var(--dark-grey)
 }
 
-/* for items that are not yet approved */
-.faded {
-    font-weight: 500;
-    color: var(--pink);
-    font-style: italic
+.page-link:hover {
+    color: #FFFFFF;
+    background-color: #145222;
 }
+
 
 /* recipe_detail page */
 .detail-title {
@@ -186,27 +186,41 @@ hr:last-child {
     display: none;
   }
 
-/* create recipe page */
 
+/* create recipe page */
 #form-title {
     color: var(--brown);
 }
 
-.form-control::-webkit-file-upload-button, #form-submit-button {
+#id_featured_image::file-selector-button, #form-submit-button, #form-submit-btn {
     background-color: var(--pale-pink);
     border-radius: 0.25rem
 }
 
+#id_recipe_name, #id_ingredients, #id_method, #id_servings, #id_featured_image {
+    width: 100%;
+}
+
+.recipe-form-label {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+#form-submit-button {
+    margin-top: 1.75rem;
+}
+
+.edit-image {
+    height: 4rem;
+    padding-bottom: 0.5rem 
+}
 
 /* delete recipe page */
-
-
-
-#recipe-cancel-delete {
+.recipe-cancel-delete {
     color: #145222;
 }
 
-#recipe-cancel-delete:hover {
+.recipe-cancel-delete:hover {
     color: #ffffff;
     text-decoration: none;
 }
@@ -225,21 +239,39 @@ hr:last-child {
 }
 
 
-/* footer */
-
-footer h2 {
-    font-size: 16px;
-}
-
-
 /* error pages */
-
 .error-paragraph {
     font-size: 28px;
     margin: 20px;
 }
 
 
+/* allauth */
+#sign-in {
+    padding-top: 2rem;    
+}
+
+.link {
+    color: #145222;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: var(--pink);
+}
+
+.allauth-header {
+    color: var(--brown);
+}
+
+
+/* for text where recipe is not authorised */
+
+.faded {
+    font-weight: 500;
+    color: var(--pink);
+    font-style: italic
+}
 
   /* media queries */
 @media (max-width: 435px){
