@@ -3,18 +3,18 @@
 {% block content %}
 
 <div class="container low-content-page">
-    <div class="row d-flex justify-content-center">
-        <div class="col-10 offset-2">
-            <h1 mb-2>403 Error</h1>
-            <p mb-2>You have tried to navigate to a forbidden page. Please press the button below to return to the home page</p>
-        </div>
-        <div class="row">
-            <div class="col-10 offset-2">
-            <form action="{% url 'home'%}">
-                <button class="btn-lrg btn-outline-danger">Return to Home</button>
-            </form>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>403 Error</h1>
+            <p>You've tried to navigate to a forbidden page. Please press the button below to return to the home page</p>
         </div>
     </div>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <form action="{% url 'home'%}">
+                <button class="btn btn-outline-danger">Return to Home</button>
+            </form>
+        </div>
     </div>
 </div>
 
