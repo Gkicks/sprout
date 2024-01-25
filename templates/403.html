@@ -4,12 +4,12 @@
 
 <div class="container low-content-page">
     <div class="row d-flex justify-content-center">
-        <div class="col-12">
-            <h1 d-flex justify-content-center mb-2>403 Error</h1>
-            <p d-flex justify-content-center error-paragraph>You have tried to navigate to a forbidden page. Please press the button below to return to the home page</p>
+        <div class="col-10 offset-2">
+            <h1 mb-2>403 Error</h1>
+            <p mb-2>You have tried to navigate to a forbidden page. Please press the button below to return to the home page</p>
         </div>
         <div class="row">
-            <div>
+            <div class="col-10 offset-2">
             <form action="{% url 'home'%}">
                 <button class="btn-lrg btn-outline-danger">Return to Home</button>
             </form>
