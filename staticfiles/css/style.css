@@ -232,10 +232,10 @@ hr:last-child {
 .messages {
     margin-bottom: 0;
     margin-top: 0;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
     padding-left: 5rem;
-    font-size: 2rem;
+    font-size: 1rem;
     list-style-type: none;
     background-color: var(--pale-pink);
 }
