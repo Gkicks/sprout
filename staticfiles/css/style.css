@@ -42,7 +42,9 @@ body {
     padding-top: 5rem;
 }
 
-
+a {
+    color: #145222;
+}
 
 
 /* nav bar */
