@@ -1,8 +1,6 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %}
+{% load static %}
 {% block content %}
-
-
-
 
 <form method="POST">
     {% csrf_token %}
@@ -12,8 +10,9 @@
         </div>
         <div class="row justify-content-center">
             <button type="submit" class="btn btn-outline-danger mr-1">Delete</button>
-            <a href="{% url 'user_recipes' %}" class="btn-link btn btn-outline-success ml-1 recipe-cancel-delete">Cancel</a>
-        </div>        
+            <a href="{% url 'user_recipes' %}"
+                class="btn-link btn btn-outline-success ml-1 recipe-cancel-delete">Cancel</a>
+        </div>
     </div>
 </form>
 

@@ -15,13 +15,7 @@ class Recipe(models.Model):
         always_update=True,)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipe_author')
-    featured_image = CloudinaryField('image', format='webp', 
-        transformation={
-            'crop': 'fill',
-            'width': 300,
-            'height': 300
-        },
-    default='placeholder')
+    featured_image = CloudinaryField('image', default='placeholder')
     category = models.IntegerField(choices=CATEGORY, default=2)
     ingredients = models.TextField(blank=False)
     method = models.TextField(blank=False)

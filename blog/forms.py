@@ -13,8 +13,11 @@ class RecipeForm(forms.ModelForm):
         'placeholder': 'Add one ingredient per line',
         }))
     method = forms.CharField(widget=forms.Textarea(attrs={
-        'placeholder': 'Add a new line for each method',
-        }))    
+        'placeholder': 'Add a blank line between each method',
+        }))   
+    # featured_image = forms.CharField(widget=forms.Image(attrs={
+    #     'class': 'form-image',
+    #     }))  
     class Meta:
         model = Recipe
         fields = ('recipe_name', 'featured_image', 'category',

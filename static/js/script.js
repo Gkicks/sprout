@@ -33,6 +33,24 @@ const cancelDelete = document.getElementById("cancel-delete");
 const confirmDeleteBtns = document.getElementById("confirm-delete-btns");
 
 
+// forms
+const commentFormWrapper = document.getElementById("div_id_body")
+const ratingFormWrapper = document.getElementById("div_id_rating")
+
+
+// index.html page
+
+// Adds eventlistener to check if the page has 'Page 1' on it when loaded
+// If page is page 1 displays the hero image
+if(heroSection) {
+    window.addEventListener('load', function () {
+    if (page[0].textContent.includes('Page 1')) {
+        heroSection.classList.remove('hidden');
+        }
+    });
+}
+
+
 // create_recipe page
 
 // checks the url to see if a user is creating or editing a comment
@@ -48,19 +66,8 @@ window.addEventListener('load', function () {
     }
 });
 
-// index.html page
 
-// Adds eventlistener to check if the page has 'Page 1' on it when loaded
-// If page is page 1 displays the hero image
-if(heroSection) {
-    window.addEventListener('load', function () {
-    if (page[0].textContent.includes('Page 1')) {
-        heroSection.classList.remove('hidden');
-        }
-    });
-}
-
-// all html pages
+// recipe detail page
 
 // adds eventlistener to get the rating of a recipe
 // displays stars showing this rating
@@ -179,7 +186,6 @@ if (confirmDelete) {
 }
 
 // to add a label to the comment form and give it a class of sr-only
-const commentFormWrapper = document.getElementById("div_id_body")
 if(commentFormWrapper) {
     document.addEventListener("DOMContentLoaded", function() {
         let commentLabel = document.createElement('label')
@@ -191,7 +197,6 @@ if(commentFormWrapper) {
 }
 
 // to add a label to the comment form and give it a class of sr-only
-const ratingFormWrapper = document.getElementById("div_id_rating")
 if(ratingFormWrapper) {
     document.addEventListener("DOMContentLoaded", function() {
         let ratingLabel = document.createElement('label')
