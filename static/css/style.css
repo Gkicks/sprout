@@ -42,11 +42,7 @@ body {
     padding-top: 5rem;
 }
 
-.faded {
-    font-weight: 500;
-    color: var(--pink);
-    font-style: italic
-}
+
 
 
 /* nav bar */
@@ -268,6 +264,14 @@ hr:last-child {
     color: var(--brown);
 }
 
+
+/* for text where recipe is not authorised */
+
+.faded {
+    font-weight: 500;
+    color: var(--pink);
+    font-style: italic
+}
 
   /* media queries */
 @media (max-width: 435px){
