@@ -156,6 +156,7 @@ footer h2 {
 
 .btn-outline-warning:hover {
     background-color: #9F2B68;
+    border-color: #9F2B68;
     color: #ffffff
 }
 
@@ -185,7 +186,12 @@ footer h2 {
 
 #no-rating-paragraph, #no-comments-paragraph {
     font-size: 1.75rem;
+}
+
+#no-rating-paragraph {
+    font-size: 1.75rem;
     margin-bottom: -1rem;
+    color: var(--pink);
 }
 
 hr:last-child {
@@ -196,6 +202,14 @@ hr:last-child {
     text-align: right;
 }
 
+/* delete modal */
+.delete-modal-btn {
+    display: inline;
+}
+
+.delete-modal-container {
+    background-color: #f6f5f4;
+}
 
 /* create recipe page */
 #form-title {
@@ -243,7 +257,7 @@ hr:last-child {
     padding-bottom: 2rem;
     padding-top: 2rem;
     padding-left: 5rem;
-    font-size: 2rem;
+    font-size: 1rem;
     list-style-type: none;
     background-color: var(--pale-pink);
 }
@@ -298,6 +312,7 @@ hr:last-child {
     .star-rating {font-size: 1.5rem;}
     #servings {font-size: 1.5rem;}
     #form-submit-button {margin-top: 0.5rem;}
+    .messages {padding-left: 1rem;}
 }
 
 @media (max-width: 576px) {
@@ -306,7 +321,6 @@ hr:last-child {
 }
 
 @media (max-width: 470px) {
-    .messages {padding-left: 2px;}
     .low-content-page h1 {font-size: 1.5rem;}
 }
 
@@ -316,9 +330,12 @@ hr:last-child {
 }
 
 @media (max-width: 340px) {
-    #no-rating-paragraph {
-        font-size: 1rem;
-    }
+    #no-rating-paragraph {font-size: 1rem;}
+    .logout-btn {font-size: 0.75rem}
+}
+
+@media (max-width: 300px){
+    #sign-in {padding-top: 1rem;}
 }
 
 @media (max-width: 285px){

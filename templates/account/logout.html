@@ -5,25 +5,23 @@
 
 <div class="container low-content-page">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-<h1 class="allauth-header mb-4">{% trans "Log Out" %}</h1>
-
-<p>{% trans 'Are you sure you want to log out?' %}</p>
-</div>
-</div>
-<div class="row">
-    <div class="col-md-8 mt-3 offset-md-2">
-
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit" class="btn btn-outline-danger">{% trans 'Log Out' %}</button>
-  <a href="{% url 'home' %}" class="btn-link btn btn-outline-success ml-1 recipe-cancel-delete">Go to Home Page</a>
-</form>
-</div>
-</div>
+        <div class="col-10 offset-1 col-sm-8 mt-3 offset-sm-2">
+            <h1 class="allauth-header mb-4">{% trans "Log Out" %}</h1>
+            <p>{% trans 'Are you sure you want to log out?' %}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 offset-1 col-sm-8 mt-3 offset-sm-2">
+            <form method="post" action="{% url 'account_logout' %}">
+                {% csrf_token %}
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <button type="submit" class="btn btn-outline-danger logout-btn">{% trans 'Log Out' %}</button>
+                <a href="{% url 'home' %}" class="btn-link btn btn-outline-success ml-1 recipe-cancel-delete logout-btn">Go to Home Page</a>
+            </form>
+        </div>
+    </div>
 </div>
 
 {% endblock content %}
