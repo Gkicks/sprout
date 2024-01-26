@@ -14,7 +14,7 @@
         <div class="col-8 offset-sm-2 offset-1">
             <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
-                {{ form }}
+                {{ form.as_p | safe }}
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
