@@ -110,55 +110,86 @@
     <div class="comment-container">
     {% for comment in comments %}
     {% if comment.approved or comment.author == user %}
-    <div class="row comment-section">
-        <div class="col-10 offset-1 col-sm-8 offset-sm-0">
-            <div class="comment-list">
-                {% if not comment.approved and comment.author == user %}
-                <p class="faded">Comment awaiting admin approval:</p>
-                {% endif %}
-                {% if comment.approved or comment.author == user %}
+        <div class="row comment-section">
+            <div class="col-10 offset-1 col-sm-8 offset-sm-0">
+                <div class="comment-list">
+                    {% if not comment.approved and comment.author == user %}
+                    <p class="faded">Comment awaiting admin approval:</p>
+                    {% endif %}
+                    {% if comment.approved or comment.author == user %}
                 <div class="{% if not comment.approved and comment.author == user %}faded{% endif %}">
                     <p id="comment{{comment.id}}">{{ comment.body }}</p>
                     <p>by {{ comment.author }} on {{ comment.created_on }} {% if comment.edited %}- comment updated 
                         {{ comment.edited_on }} {% endif %}</p>
                 </div>
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
-        </div>
         <!-- buttons for the user to edit or delete their own comments -->
-        {% if user.is_authenticated and comment.author == user %}
-        <div class="col-6 offset-1 col-sm-4 offset-sm-0">
-            <div id="comment-buttons">
-                <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}" aria-label="edit-button"><i
-                        class="fa-regular fa-pen-to-square"></i></button>
-                <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}" aria-label="delete-button"><i
-                        class="fa-regular fa-trash-can"></i></button>
+            {% if user.is_authenticated and comment.author == user %}
+            <div class="col-6 offset-1 col-sm-4 offset-sm-0">
+                <div id="comment-buttons">
+                    <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}" aria-label="edit-button"><i
+                            class="fa-regular fa-pen-to-square"></i></button>
+                    <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}" aria-label="delete-button"><i
+                            class="fa-regular fa-trash-can"></i></button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <hr>
+        {% endif %}
+        {% endfor %}
+        <!-- informs the user if there have been no comments left for that recipe -->
+        {% if not comments %}
+        <div>
+            <p id="no-comments-paragraph">There are no comments to display</p>
+        </div>
+    {% endif %}
+    </div>
+    <br>    
+    <!-- delete comment modal -->
+    <!-- <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <h5 class="modal-title">Are you sure you want to delete this comment?</h5>
+                <form id="confirm-delete-btns" method='POST'>
+                    {% csrf_token %}
+                    <button id="confirm-delete">Delete</button>
+                </form>
+                <button type="button" class="close" id="cancel-delete" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Cancel</span>
+                </button>
             </div>
         </div>
-        {% endif %}
     </div>
-    <hr>
-    {% endif %}
-    {% endfor %}
-    <!-- informs the user if there have been no comments left for that recipe -->
-    {% if not comments %}
-    <div>
-    <p id="no-comments-paragraph">There are no comments to display</p>
-</div>
-{% endif %}
-</div>
-<br>
-<!-- delete comment modal -->
-<div id="delete-modal" class="modal">
-    <div class="modal-content">
-        <p>Are you sure you want to delete this comment?</p>
-        <form id="confirm-delete-btns" method='POST'>
-            {% csrf_token %}
-            <button id="confirm-delete">Delete</button>
-        </form>
-        <button id="cancel-delete">Cancel</button>
+</div> -->
+    <!-- delete comment modal -->
+    <div id="delete-modal" class="modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content  delete-modal-container">
+                <div class="container mt-4 mb-4">
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <div>  
+                                <p>Are you sure you want to delete this comment?</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <form class="delete-modal-btn" id="confirm-delete-btns" method='POST'>
+                                {% csrf_token %}
+                                <button id="confirm-delete" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                            <form class="delete-modal-btn">    
+                                <button id="cancel-delete" class="btn btn-outline-success">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-</div>
-
 {% endblock content %}
