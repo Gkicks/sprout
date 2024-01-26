@@ -167,6 +167,7 @@
                                 <button id="confirm-delete" class="btn btn-outline-danger">Delete</button>
                             </form>
                             <form class="delete-modal-btn">    
+                                {% csrf_token %}
                                 <button id="cancel-delete" class="btn btn-outline-success">Cancel</button>
                             </form>
                         </div>
