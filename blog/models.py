@@ -9,7 +9,7 @@ CATEGORY = ((0, 'Breakfast'), (1, 'Starter'), (2, 'Main'),
 
 
 class Recipe(models.Model):
-    recipe_name = models.CharField(max_length=255, unique=True)
+    recipe_name = models.CharField(max_length=255, unique=True, blank=False)
     slug = AutoSlugField(
         max_length=255, populate_from='recipe_name', editable=True,
         always_update=True,)
