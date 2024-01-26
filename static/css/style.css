@@ -154,6 +154,11 @@ footer h2 {
     background-color: #145222;
 }
 
+.btn-outline-warning:hover {
+    background-color: #9F2B68;
+    color: #ffffff
+}
+
 
 /* recipe_detail page */
 .detail-title {
@@ -180,11 +185,16 @@ footer h2 {
 
 #no-rating-paragraph, #no-comments-paragraph {
     font-size: 1.75rem;
+    margin-bottom: -1rem;
 }
 
 hr:last-child {
     display: none;
   }
+
+#comment-buttons {
+    text-align: right;
+}
 
 
 /* create recipe page */
@@ -273,7 +283,46 @@ hr:last-child {
     font-style: italic
 }
 
-  /* media queries */
+
+/* media queries */
+
+@media (max-width: 992px) {
+    .low-content-page {
+        height: calc(100vh - 197.5px);
+        padding-top: 4rem;
+    }    
+}
+
+@media (max-width: 800px) {
+    #recipe-detail-title {font-size: 2.5rem;}
+    .star-rating {font-size: 1.5rem;}
+    #servings {font-size: 1.5rem;}
+    #form-submit-button {margin-top: 0.5rem;}
+}
+
+@media (max-width: 576px) {
+    #detail-recipe-img {margin-bottom: 2rem;}
+    #comment-buttons {text-align: left;}
+}
+
+@media (max-width: 470px) {
+    .messages {padding-left: 2px;}
+    .low-content-page h1 {font-size: 1.5rem;}
+}
+
 @media (max-width: 435px){
     .form-control {font-size: 0.5rem;}
+    #recipe-detail-title {font-size: 2rem;}
 }
+
+@media (max-width: 340px) {
+    #no-rating-paragraph {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 285px){
+    .star-rating {font-size: 1.4rem;}
+    #id_featured_image {font-size: 0.9rem;}
+}
+

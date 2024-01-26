@@ -7,14 +7,14 @@
 <div class="container">
     <div class="row">
         <!-- recipe title -->
-        <div class="col-12 h1 mt-4 mb-2 detail-title">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 h1 mt-4 mb-2 detail-title">
             <h1 id="recipe-detail-title">{{ recipe.recipe_name }}</h1>
         </div>
     </div>
     <br>
     <!-- recipe image -->
     <div class="row">
-        <div class="my-auto col-4" id="detail-recipe-img">
+        <div class="my-sm-auto col-8 offset-2 col-sm-4 offset-sm-0" id="detail-recipe-img">
             <!-- displays default image if an image is not uploaded -->
             {% if "placeholder" in recipe.featured_image.url %}
             <img class="card-img img-fluid" src="{% static 'images/sprout.webp' %}" alt="{{ recipe.recipe_name}}">
@@ -24,7 +24,7 @@
             {% endif %}
         </div>
         <!-- average rating of recipe displayed as stars -->
-        <div class="col-8">
+        <div class="col-10 offset-1 col-sm-8 offset-sm-0">
             <div>
                 <p id="average-rating" class="hidden">{{ average_number }}</p>
             </div>
@@ -32,6 +32,8 @@
                 {% if not average_number %}
                 <!-- displays it there are no ratings for the recipe -->
                 <p id="no-rating-paragraph">There are no ratings for this recipe</p>
+                <!-- need two as hr:last child is set to display:none -->
+                <hr><hr>
                 {% else %}
                 <!-- displays it there are ratings for the recipe -->
                 <div class="star-rating">
@@ -65,35 +67,35 @@
     <br>
     <!-- displays the ingredients - one ingredient per line if this is how the user has entered it -->
     <div class="row">
-        <div class="col-12 mt-2 mb-2 detail-title">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 mt-2 mb-2 detail-title">
             <h2>Ingredients</h2>
         </div>
     </div>
     <div class="row">
-        <div>
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0">
             {{ recipe.ingredients | linebreaks }}
         </div>
     </div>
     <!-- displays the method - one method per line if this is how the user has entered it -->
     <div class="row">
-        <div class="col-12 mt-2 mb-2 detail-title">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 mt-2 mb-2 detail-title">
             <h2>Method</h2>
         </div>
     </div>
     <div class="row">
-        <div>
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0">
             {{ recipe.method | linebreaksbr }}
         </div>
     </div>
     <br>    
     <div class="row">
-        <div class="col-12 mt-2 mb-2 detail-title">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0 mt-2 mb-2 detail-title">
             <h3 id="comment-header">Comments</h3>
         </div>
     </div>
     <!-- A form for the user to add a comment -->
     <div class="row">
-        <div class="col-12">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0">
             <form id="comment-form" method="POST" enctype="multipart/form-data">
                 <div>
                     {% csrf_token %}
@@ -109,7 +111,7 @@
     {% for comment in comments %}
     {% if comment.approved or comment.author == user %}
     <div class="row comment-section">
-        <div class="col-8">
+        <div class="col-10 offset-1 col-sm-8 offset-sm-0">
             <div class="comment-list">
                 {% if not comment.approved and comment.author == user %}
                 <p class="faded">Comment awaiting admin approval:</p>
@@ -125,8 +127,8 @@
         </div>
         <!-- buttons for the user to edit or delete their own comments -->
         {% if user.is_authenticated and comment.author == user %}
-        <div class="col-4">
-            <div class="text-right">
+        <div class="col-6 offset-1 col-sm-4 offset-sm-0">
+            <div id="comment-buttons">
                 <button class="btn btn-outline-success edit-btn" data-comment-id="{{ comment.id }}" aria-label="edit-button"><i
                         class="fa-regular fa-pen-to-square"></i></button>
                 <button class="btn btn-outline-danger delete-btn" data-comment-id="{{ comment.id }}" aria-label="delete-button"><i
