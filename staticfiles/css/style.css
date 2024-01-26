@@ -270,6 +270,9 @@ hr:last-child {
     margin-bottom: 1rem;
 }
 
+#signup-container {
+    padding-top: 1rem;
+}
 
 /* for text where recipe is not authorised */
 
