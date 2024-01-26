@@ -82,7 +82,7 @@ if(rating) {
         }
         else if (averageRating == 1.5) {
             for (let star of stars) {
-                star.className = 'fa-regular, fa-star'; 
+                star.className = 'fa-regular', 'fa-star'; 
             }
             starOne.className = 'star fa-solid fa-star';
             starTwo.className = ' star fa-solid fa-star-half-stroke';
