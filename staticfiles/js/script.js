@@ -149,6 +149,8 @@ for (let button of editButtons) {
         let commentId = this.getAttribute("data-comment-id");
         let commentContent = document.getElementById(`comment${commentId}`).innerText;
         commentBody.value = commentContent;
+        commentBody.style.height = '6rem'
+        commentBody.style.border = '2px solid var(--dark-green)'
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
         commentHeader.scrollIntoView({behaviour: 'smooth'});
