@@ -1,6 +1,7 @@
 /* google fonts */
 @import url('https://fonts.googleapis.com/css2?family=Arimo&family=Crete+Round&family=Kanit&display=swap');
 
+
 /* universal styling */
 body {
     margin: 0;
@@ -41,8 +42,6 @@ body {
     height: calc(100vh - 274px);
     padding-top: 5rem;
 }
-
-
 
 
 /* nav bar */
@@ -211,6 +210,7 @@ hr:last-child {
     background-color: #f6f5f4;
 }
 
+
 /* create recipe page */
 #form-title {
     color: var(--brown);
@@ -238,6 +238,7 @@ hr:last-child {
     height: 4rem;
     padding-bottom: 0.5rem 
 }
+
 
 /* delete recipe page */
 .recipe-cancel-delete {
@@ -290,7 +291,6 @@ hr:last-child {
 
 
 /* for text where recipe is not authorised */
-
 .faded {
     font-weight: 500;
     color: var(--pink);
@@ -299,7 +299,6 @@ hr:last-child {
 
 
 /* media queries */
-
 @media (max-width: 992px) {
     .low-content-page {
         height: calc(100vh - 197.5px);
@@ -342,4 +341,3 @@ hr:last-child {
     .star-rating {font-size: 1.4rem;}
     #id_featured_image {font-size: 0.9rem;}
 }
-
