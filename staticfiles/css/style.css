@@ -38,7 +38,7 @@ body {
 }
 
 .low-content-page {
-    height: calc(100vh - 274px);
+    min-height: calc(100vh - 274px);
     padding-top: 5rem;
 }
 
@@ -264,6 +264,10 @@ hr:last-child {
 
 .allauth-header {
     color: var(--brown);
+}
+
+#signup-form-container input {
+    margin-bottom: 1rem;
 }
 
 
