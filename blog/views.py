@@ -33,7 +33,8 @@ class RecipeDetailView(generic.DetailView):
         queryset = Recipe.objects.all()
         recipe = get_object_or_404(queryset, slug=slug)
         comments = recipe.comments.all().order_by("created_on")
-        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+        average_rating = Rating.objects.filter(
+            recipe=recipe).aggregate(Avg('rating'))['rating__avg']
         average_number = round(average_rating*2)/2 if average_rating else None
 
         return render(
@@ -96,7 +97,8 @@ class RecipeDetailView(generic.DetailView):
             },
         )
 
-@login_required 
+
+@login_required
 def edit_comment(request, slug, comment_id):
     """
     allows the comment author to edit their comment
@@ -116,24 +118,28 @@ def edit_comment(request, slug, comment_id):
             comment.approved = False
             comment.edited = True
             comment.save()
-            messages.add_message(request, messages.SUCCESS, 'Comment updated and awaiting approval')
+            messages.add_message(
+                request, messages.SUCCESS,
+                'Comment updated and awaiting approval')
         else:
-            messages.add_message(request, messages.ERROR,
-                                'Error updating comment')
+            messages.add_message(
+                request, messages.ERROR, 'Error updating comment')
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
+
 
 @login_required
 def delete_comment(request, slug, comment_id):
     """
     allows the comment author to delete their own comment
-    redirects the user back to the recipe detail page 
+    redirects the user back to the recipe detail page
     """
     queryset = Recipe.objects.all()
     recipe = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
-    messages.add_message(request, messages.SUCCESS, 'Your comment has been deleted')
+    messages.add_message(
+        request, messages.SUCCESS, 'Your comment has been deleted')
 
     return HttpResponseRedirect(reverse('recipe_detail', args=[slug]))
 
@@ -149,7 +155,7 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         """
         checks the form is valid
-        redirects the user back to the home page 
+        redirects the user back to the home page
         """
         form.instance.author = self.request.user
         messages.success(
@@ -157,6 +163,7 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
             'Recipe submitted and awaiting approval')
 
         return super().form_valid(form)
+
 
 def user_recipes(request):
     """
@@ -167,9 +174,11 @@ def user_recipes(request):
         author=request.user).order_by('-created_on')
 
     for recipe in user_recipes:
-        average_rating = Rating.objects.filter(recipe=recipe).aggregate(Avg('rating'))['rating__avg']
-        recipe.average_rating = round(average_rating*2)/2 if average_rating else None
-    
+        average_rating = Rating.objects.filter(
+            recipe=recipe).aggregate(Avg('rating'))['rating__avg']
+        recipe.average_rating = round(
+            average_rating*2)/2 if average_rating else None
+
     return render(
         request,
         'blog/my_recipes.html',
