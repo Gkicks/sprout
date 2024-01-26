@@ -212,7 +212,7 @@ class DeleteRecipe(UserPassesTestMixin, DeleteView):
     allows the user to delete a recipe that they are the author of
     """
     model = Recipe
-    template_name = 'blog/confirm-delete.html'
+    template_name = 'blog/confirm_delete.html'
     contect_object_name = 'recipe'
     success_url = reverse_lazy('user_recipes')
 

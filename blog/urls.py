@@ -9,7 +9,7 @@ urlpatterns = [
     path('blog/my_recipes/', views.user_recipes, name='user_recipes'),
     path('blog/edit_recipe/<slug>/',
          views.EditRecipe.as_view(), name='edit_recipe'),
-    path('blog/confirm-delete/<slug>/',
+    path('blog/confirm_delete/<slug>/',
          views.DeleteRecipe.as_view(), name='delete_recipe'),
     path('<slug>/edit_comment/<int:comment_id>',
          views.edit_comment, name='edit_comment'),
