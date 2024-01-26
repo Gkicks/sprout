@@ -37,6 +37,12 @@ body {
     border-color: #240032;
 }
 
+.btn-outline-warning:hover {
+    color: #ffffff;
+    border-color: #240032;
+    background-color: #240032;
+}
+
 .low-content-page {
     min-height: calc(100vh - 274px);
     padding-top: 5rem;
@@ -187,6 +193,10 @@ footer h2 {
 hr:last-child {
     display: none;
   }
+
+.delete-modal-btn {
+    display: inline
+}
 
 
 /* create recipe page */

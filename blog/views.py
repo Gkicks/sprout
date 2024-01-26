@@ -59,8 +59,6 @@ class RecipeDetailView(generic.DetailView):
         rating = None
         if request.method == 'POST' and 'comment-submit' in request.POST:
             rating = None
-            if comment.len() < 3:
-                rating = None
             if comment_form.is_valid():
                 comment = comment_form.save(commit=False)
                 comment.recipe = recipe

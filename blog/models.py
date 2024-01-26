@@ -13,7 +13,7 @@ class Recipe(models.Model):
     recipe_name = models.CharField(max_length=255, unique=True, blank=False)
     slug = AutoSlugField(
         max_length=255, populate_from='recipe_name', editable=True,
-        always_update=True,)
+        always_update=True, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name='recipe_author')
     featured_image = CloudinaryField('image', default='placeholder')
@@ -28,6 +28,10 @@ class Recipe(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
+
+    def cleanServings(self):
+        if len(self) < 1:
+            raise ValidationError('Your recipe must serve more than 1')
 
     def __str__(self):
         return self.recipe_name
@@ -47,6 +51,10 @@ class Comment(models.Model):
     class Meta:
         ordering = ["created_on"]
 
+    def cleanComment(self):
+        if len(self) < 3:
+            raise ValidationError('Your comment must have more than 3 characters')
+
     def __str__(self):
         return self.body
 
@@ -56,6 +64,10 @@ class Rating(models.Model):
         Recipe, on_delete=models.CASCADE, related_name='rating')
     rating = models.IntegerField(blank=True, default=0, validators=[
         MinValueValidator(1), MaxValueValidator(5)],)
+
+    def cleanRating(self):
+        if len(self) < 1 or len(self) > 5:
+            raise ValidationError('Your rating must be between 1 and 5')
 
     def __str__(self):
         return str(self.rating)

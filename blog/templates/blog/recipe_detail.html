@@ -94,6 +94,7 @@
         </div>
     </div>
     <!-- A form for the user to add a comment -->
+    {% if user.is_authenticated %}
     <div class="row">
         <div class="col-10 offset-1 col-sm-12 offset-sm-0">
             <form id="comment-form" method="POST" enctype="multipart/form-data">
@@ -106,6 +107,14 @@
             <br><br>
         </div>
     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-10 offset-1 col-sm-12 offset-sm-0">
+            <p>Please sign in to leave a comment</p>
+            <br><br>
+        </div>
+    </div>
+    {% endif %}
     <!-- displays a list of comments -->
     <div class="comment-container">
     {% for comment in comments %}

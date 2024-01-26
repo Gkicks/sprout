@@ -5,6 +5,15 @@
 
 <h1 class="col-12 m-3 html-header">My Recipes</h1>
 
+{% if not user_recipes %}
+<div class="container low-content-page">
+    <div class="row">
+        <div class="p">
+            You haven't created any recipes yet
+        </div>
+    </div>
+</div>
+{% else %}
 <!-- recipe card library - will only display the users recipes -->
 <div class="container mb-3">
     {% for recipe in user_recipes %}
@@ -59,5 +68,6 @@
     <hr>
     {% endfor %}
 </div>
+{% endif %}
 
 {% endblock content %}
