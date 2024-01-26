@@ -149,12 +149,21 @@ for (let button of editButtons) {
         let commentId = this.getAttribute("data-comment-id");
         let commentContent = document.getElementById(`comment${commentId}`).innerText;
         commentBody.value = commentContent;
+        commentBody.style.border = "2px solid var(--dark-green)";
+        commentBody.style.height = "6rem";
         submitButton.innerText = "Update";
         commentForm.setAttribute("action", `edit_comment/${commentId}`);
         commentHeader.scrollIntoView({behaviour: 'smooth'});
     }
         );}
 
+// adds eventlisteners to the cancel-delete button
+// hides the delete modal when this is pressed
+if(deleteModal) {
+    cancelDelete.addEventListener("click", function() {
+        deleteModal.style.display = "None";
+    });
+}
 
 // delete comment
 // add eventlistener to each delete button
@@ -166,14 +175,6 @@ for(let button of deleteButtons) {
         let commentId = this.getAttribute("data-comment-id");
         confirmDeleteBtns.setAttribute("action", `delete_comment/${commentId}`);
         deleteModal.style.display = "block";
-    });
-}
-
-// adds eventlisteners to the cancel-delete button
-// hides the delete modal when this is pressed
-if(deleteModal) {
-    cancelDelete.addEventListener("click", function() {
-        deleteModal.style.display = "None";
     });
 }
 
