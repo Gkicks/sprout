@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from autoslug import AutoSlugField
-from django.core.validators import MinValueValidator, MaxValueValidator, MinLengthValidator
+from django.core.validators import (
+    MinValueValidator, MaxValueValidator, MinLengthValidator)
 
 CATEGORY = ((0, 'Breakfast'), (1, 'Starter'), (2, 'Main'),
             (3, 'Snack'), (4, 'Side'), (5, 'Dessert'), (6, 'Drink'))
