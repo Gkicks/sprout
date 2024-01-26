@@ -1,6 +1,6 @@
-{% extends 'base.html' %} 
-{% load crispy_forms_tags %} 
-{% load static %} 
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
 {% block content %}
 
 <div class="container mt-4 mb-4">
@@ -10,28 +10,28 @@
         </div>
     </div>
     <div class="row">
-    <div class="col-10 offset-1 mb-3"> 
-        <form method="POST" enctype="multipart/form-data" id="create-recipe-form">
-            {% csrf_token %}
-            <label for="id_recipe_name" class="recipe-form-label">Recipe Name*</label>
-            {{ form.recipe_name }}
-            <label for="id_featured_image" class="recipe-form-label">Image*</label>
-            {% if recipe %}
-            <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name }}" class="edit-image">
-            {% endif %}
-            {{ form.featured_image }}
-            <label for="id_category" class="recipe-form-label">Category*</label>
-            {{ form.category }}
-            <label for="id_ingredients" class="recipe-form-label">Ingredients*</label>
-            {{ form.ingredients }}
-            <label for="id_method" class="recipe-form-label">Method*</label>
-            {{ form.method }}
-            <label for="id_servings" class="recipe-form-label">Servings*</label>
-            {{ form.servings }}
-            <button id="form-submit-button" class="recipe-form-label" type="submit"></button>
-        </form>
+        <div class="col-10 offset-1 mb-3">
+            <form method="POST" enctype="multipart/form-data" id="create-recipe-form">
+                {% csrf_token %}
+                <label for="id_recipe_name" class="recipe-form-label">Recipe Name*</label>
+                    {{ form.recipe_name }}
+                <label for="id_featured_image" class="recipe-form-label">Image*</label>
+                {% if recipe %}
+                <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.recipe_name }}" class="edit-image">
+                {% endif %}
+                    {{ form.featured_image }}
+                <label for="id_category" class="recipe-form-label">Category*</label>
+                    {{ form.category }}
+                <label for="id_ingredients" class="recipe-form-label">Ingredients*</label>
+                    {{ form.ingredients }}
+                <label for="id_method" class="recipe-form-label">Method*</label>
+                    {{ form.method }}
+                <label for="id_servings" class="recipe-form-label">Servings*</label>
+                    {{ form.servings }}
+                <button id="form-submit-button" class="recipe-form-label" type="submit"></button>
+            </form>
+        </div>
     </div>
-</div>
 </div>
 
 {% endblock %}

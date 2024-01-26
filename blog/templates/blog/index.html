@@ -1,5 +1,5 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %}
+{% load static %}
 {% block content %}
 
 <!-- main photo and tagline -->
@@ -7,8 +7,7 @@
     <div class="row hero-image">
         <div class="col-8 col-sm-6 col-md-4 offset-2 offset-sm-3 offset-md-4 p-4 my-auto hero-blurb">
             <h1 id="hero-tagline" class="my-auto text-center">
-                Sprout - The community for plant based people to share their wholefood
-                recipes!
+                Sprout - The community for plant based people to share their wholefood recipes!
             </h1>
         </div>
     </div>
@@ -65,20 +64,20 @@
     <ul class="pagination justify-content-center">
         <!-- shows a back arrow if there are recipes on previous pages -->
         {% if page_obj.has_previous %}
-        <li class="nav-item">
-            <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
-        </li>
+            <li class="nav-item">
+                <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+            </li>
         {% endif %}
-        <!-- displays current page number and how many pages there are in total -->
-        <li class="page-of-text nav-item m-2">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-        </li>
+            <!-- displays current page number and how many pages there are in total -->
+            <li class="page-of-text nav-item m-2">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </li>
         <!-- shows a forward arrow if there are more recipes on the next pages -->
         {% if page_obj.has_next %}
-        <li class="nav-item">
-            <a href="?page={{ page_obj.next_page_number }}" class="page-link">
-                NEXT &raquo;</a>
-        </li>
+            <li class="nav-item">
+                <a href="?page={{ page_obj.next_page_number }}" class="page-link">
+                    NEXT &raquo;</a>
+            </li>
         {% endif %}
     </ul>
 </nav>

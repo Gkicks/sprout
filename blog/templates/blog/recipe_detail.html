@@ -149,22 +149,6 @@
     </div>
     <br>    
     <!-- delete comment modal -->
-    <!-- <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <h5 class="modal-title">Are you sure you want to delete this comment?</h5>
-                <form id="confirm-delete-btns" method='POST'>
-                    {% csrf_token %}
-                    <button id="confirm-delete">Delete</button>
-                </form>
-                <button type="button" class="close" id="cancel-delete" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">Cancel</span>
-                </button>
-            </div>
-        </div>
-    </div>
-</div> -->
-    <!-- delete comment modal -->
     <div id="delete-modal" class="modal">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content  delete-modal-container">
@@ -192,4 +176,5 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}
