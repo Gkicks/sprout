@@ -2,10 +2,6 @@ from django.contrib import admin
 from .models import Recipe, Comment, Rating
 
 
-class RecipeAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(Recipe)
 class RecipeAdmin(admin.ModelAdmin):
     list_display = ['recipe_name', 'author', 'created_on', 'approved']
