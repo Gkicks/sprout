@@ -1,0 +1,343 @@
+/* google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Arimo&family=Crete+Round&family=Kanit&display=swap');
+
+
+/* universal styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'arimo', 'sans-serif';
+    color: var(--dark-grey);
+}
+
+:root {
+    --brown: #8b4513;
+    --pink: #bc8f8fdb;
+    --pale-pink: #d9bfbf;
+    --sage: #dde6d5;
+    --dark-green: #667B68;
+    --grey: #857f7f;
+    --dark-grey: #222222;
+    --white: #ffffff;
+}
+
+.hidden {
+    height: 0;
+    width: 0;
+    font-size: 0;
+    display: None;
+}
+
+.btn-outline-success {
+    color: #145222;
+    border-color: #145222;
+}
+
+.btn-outline-warning {
+    color: #240032;
+    border-color: #240032;
+}
+
+.low-content-page {
+    height: calc(100vh - 274px);
+    padding-top: 5rem;
+}
+
+
+/* nav bar */
+#mainNav {
+    background-color: var(--sage);
+}
+
+#logo {
+    color: var(--dark-green);
+    font-size: xx-large;
+    font-weight: bolder;
+    font-family: 'kanit', 'sans-serif';
+}
+
+
+/* footer */
+footer {
+    background-color: var(--dark-green);
+    color: var(--white);
+}
+
+footer h2 {
+    font-size: 16px;
+}
+
+
+/* landing page image*/
+.hero-image {
+    background-image: url("../images/hero-image.637aa1941f50.webp");
+    background-size: cover;
+    height: 60vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    position: relative
+}
+
+.hero-blurb {
+    background-color: var(--pale-pink);
+    opacity: 85%;
+    border-radius: 0.25rem;
+}
+
+#hero-tagline {
+    color: var(--brown);
+    font-size: 1.5rem;
+    opacity: 100%;
+    font-weight: 600;
+}
+
+
+/* landing page recipe display */
+.card-footer {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.image-container {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.name-display {
+    font-size: x-large
+}
+
+.recipe-link {
+    color: var(--brown);
+    text-decoration: none;
+}
+
+.recipe-link:hover {
+    color: var(--dark-green);
+    text-decoration: none;
+}
+
+/* pagination */
+.page-link,
+.page-of-text {
+    color: var(--dark-green);
+}
+
+
+/* my recipes page */
+.my-recipe-btn {
+    margin-top: 5%;
+}
+
+.html-header {
+    color: var(--brown);    
+}
+
+.my-recipe {
+    color: var(--dark-grey)
+}
+
+.page-link:hover {
+    color: #FFFFFF;
+    background-color: #145222;
+}
+
+.btn-outline-warning:hover {
+    background-color: #9F2B68;
+    border-color: #9F2B68;
+    color: #ffffff
+}
+
+
+/* recipe_detail page */
+.detail-title {
+    padding: 0;
+    color: var(--brown)
+}
+
+.comment-list {
+    word-wrap: break-word
+}
+
+.star-rating {
+    font-size: 2rem;
+    color: var(--pink);
+}
+
+#recipe-detail-title {
+    font-size: 4rem;
+}
+
+#servings {
+    font-size: 1.75rem;
+}
+
+#no-rating-paragraph, #no-comments-paragraph {
+    font-size: 1.75rem;
+}
+
+#no-rating-paragraph {
+    font-size: 1.75rem;
+    margin-bottom: -1rem;
+    color: var(--pink);
+}
+
+hr:last-child {
+    display: none;
+  }
+
+#comment-buttons {
+    text-align: right;
+}
+
+/* delete modal */
+.delete-modal-btn {
+    display: inline;
+}
+
+.delete-modal-container {
+    background-color: #f6f5f4;
+}
+
+
+/* create recipe page */
+#form-title {
+    color: var(--brown);
+}
+
+#id_featured_image::file-selector-button, #form-submit-button, #form-submit-btn {
+    background-color: var(--pale-pink);
+    border-radius: 0.25rem
+}
+
+#id_recipe_name, #id_ingredients, #id_method, #id_servings, #id_featured_image {
+    width: 100%;
+}
+
+.recipe-form-label {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+#form-submit-button {
+    margin-top: 1.75rem;
+}
+
+.edit-image {
+    height: 4rem;
+    padding-bottom: 0.5rem 
+}
+
+
+/* delete recipe page */
+.recipe-cancel-delete {
+    color: #145222;
+}
+
+.recipe-cancel-delete:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+/* messages */
+.messages {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    padding-left: 5rem;
+    font-size: 1rem;
+    list-style-type: none;
+    background-color: var(--pale-pink);
+}
+
+
+/* error pages */
+.error-paragraph {
+    font-size: 28px;
+    margin: 20px;
+}
+
+
+/* allauth */
+#sign-in {
+    padding-top: 2rem;    
+}
+
+.link {
+    color: #145222;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: var(--pink);
+}
+
+.allauth-header {
+    color: var(--brown);
+}
+
+
+/* for text where recipe is not authorised */
+.faded {
+    font-weight: 500;
+    color: var(--pink);
+    font-style: italic
+}
+
+
+/* media queries */
+@media (max-width: 992px) {
+    .low-content-page {
+        height: calc(100vh - 197.5px);
+        padding-top: 4rem;
+    }    
+}
+
+@media (max-width: 800px) {
+    #recipe-detail-title {font-size: 2.5rem;}
+    .star-rating {font-size: 1.5rem;}
+    #servings {font-size: 1.5rem;}
+    #form-submit-button {margin-top: 0.5rem;}
+    .messages {padding-left: 1rem;}
+}
+
+@media (max-width: 576px) {
+    #detail-recipe-img {margin-bottom: 2rem;}
+    #comment-buttons {text-align: left;}
+}
+
+@media (max-width: 470px) {
+    .low-content-page h1 {font-size: 1.5rem;}
+}
+
+@media (max-width: 435px){
+    .form-control {font-size: 0.5rem;}
+    #recipe-detail-title {font-size: 2rem;}
+}
+
+@media (max-width: 340px) {
+    #no-rating-paragraph {font-size: 1rem;}
+    .logout-btn {font-size: 0.75rem}
+}
+
+@media (max-width: 300px){
+    #sign-in {padding-top: 1rem;}
+}
+
+@media (max-width: 285px){
+    .star-rating {font-size: 1.4rem;}
+    #id_featured_image {font-size: 0.9rem;}
+}

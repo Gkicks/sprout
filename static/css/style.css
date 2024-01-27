@@ -39,8 +39,8 @@ body {
 }
 
 .low-content-page {
-    height: calc(100vh - 274px);
-    padding-top: 5rem;
+    min-min-height: calc(100vh - 274px);
+    padding-top: 4rem;
 }
 
 
