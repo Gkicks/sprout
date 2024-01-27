@@ -117,7 +117,6 @@ if 'test' in sys.argv:
     CSRF_TRUSTED_ORIGINS = [
         "https://*.codeanyapp.com",
         "https://*.herokuapp.com",
-        "https://8000-gkicks-sprout-4oac3akktd.us2.codeanyapp.com"
     ]
 
 # Password validation

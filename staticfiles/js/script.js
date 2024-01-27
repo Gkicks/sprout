@@ -78,7 +78,7 @@ if(rating) {
             for (let star of stars) {
                 star.classList.add('fa-regular', 'fa-star'); 
             }
-            starOne.classList = 'star fa-solid fa-star';
+            starOne.className = 'star fa-solid fa-star';
         }
         else if (averageRating == 1.5) {
             for (let star of stars) {
