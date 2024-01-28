@@ -70,6 +70,17 @@ Visit the deployed site here: [Sprout](https://sprout-p4-ffedffefc60e.herokuapp.
       - [Sign Up](#sign-up-1)
       - [Log Out](#log-out-1)
       - [404.html / 403.html / 500.html](#404html--403html--500html-1)
+- [Technologies Used](#technologies-used)
+  - [Languages Used](#languages-used)
+  - [Frameworks, Libraries and Programs Used](#frameworks-libraries-and-programs-used)
+  - [Deployment and Local Development](#deployment-and-local-development)
+    - [Heroku](#heroku)
+    - [How to Fork](#how-to-fork)
+    - [How to Clone](#how-to-clone)
+- [Testing](#testing)
+- [Bugs](#bugs)
+  - [Resolved Bugs](#resolved-bugs)
+  - [Unresolved Bugs](#unresolved-bugs)
 
 [Back to top](#sprout)
 
@@ -475,3 +486,88 @@ I used Lucid Chart to create my database schema
 - No concerns
 
 ![Wave 404 403 500](static/images/wave-logout.png)
+
+# Technologies Used
+
+## Languages Used
+
+HTML, CSS, JavaScipt, Django and Bootstrap were used to create this website
+
+## Frameworks, Libraries and Programs Used
+
+- Allauth – for user authentication
+- Am I Responsive? To show the website image on a range of devices
+- Cloudinary – To upload and stores images in the cloud
+- Codeanywhere – To write the code
+- Convertio - To change images to webp format and reduce file size
+- Crispy Forms – to automatically add styling to rendered forms
+- ElephantSQL – to host the PostSQL database
+- Figma – To create wireframes
+- Font Awesome - For the iconography on the social media links
+- Github - To save and store files
+- Google Dev Tools – Used to troubleshoot and debug
+- Google Fonts - To import the fonts used on the website
+- JShint – to check for any issues in the JavaScript code
+- Lucid Chart – To create the database schema
+- Wave Validator – To check if improvement could be made for those users with disabilities
+- WC3 Validator / Jigsaw – To check code meets the required standard
+- Whitenoise – configures the Django project to serve it’s own staticfiles
+
+## Deployment and Local Development
+
+### Heroku
+
+This site is deployed using Heroku and following these steps:
+1.	Create a Heroku account or, if you already have one, sign in
+2.	Click the 'new' button and select 'create new app'
+3.	Enter a unique name for your app and choose the region you are in
+4.	Click 'create app'
+5.	Click 'settings' and scroll down to 'Config Vars'. Click 'reveal Config Vars'
+6.	In the box with the text 'KEY' type PORT and 8000 in the box with the text 'VALUE'
+7.	Scroll to the next section, buildpacks and click 'add buildpack'. Add Python and NodeJS, in that order. Click 'Add Buildpack'
+8.	Scroll back to the top of the page and click 'Deploy'
+9.	Scroll to the Deployment method and choose Github
+10.	In the next section, Connect to Github, type in your repository name. If you press the search button it'll bring up all your repositories. Connect to the correct repository
+11.	Scroll down to the two sections for deployment (automatic deploys or manual deploys). The automatic deplays will update each time the 'git push' command is entered. For the maunal deploy, this will deploy the branch specified, in it's current state, when the 'Deploy Branch' button is clicked
+
+### How to Fork
+
+- Sign up and login to GitHub
+- Find the GitHub repository https://github.com/Gkicks/sprout.git 
+- Locate the “fork” button which is located towards the top of the page. Click this button
+
+### How to Clone
+
+- Sign up and login to GitHub
+- Find the GitHub repository https://github.com/Gkicks/sprout.git 
+- Locate the “<> Code” button and click this. This will bring up a new panel
+- Click the local tab
+- Decide if you would like to clone with HTTPS, SSH or GitHub CLI – copy the link shown under the one of your choosing
+- Open your code editor
+- Open a new terminal in your code editor and change the working directory to the location you want to use for the clone directory (you can use the cd command to change directories)
+- When you are in your chosen directory type “git clone” followed by pasting in the URL you copied in GitHub
+- Press enter to execute the command and your clone will be created
+
+# Testing
+
+Please refer to the testing information in the seperate [testing.md](/testing.md) file
+
+# Bugs
+
+## Resolved Bugs
+
+**Bug**|**Resolution**
+:-----:|:-----:
+Category was showing as a number, rather than text, in index.html|Changed recipe.category to recipe.get\_category\_display (used Stack Overflow)
+when putting margins on the recipe cards one recipe in the row was wrapping to the next line|Reconstructed the Django grid – needed extra divs to prevent this
+each card in the index.html was a different height|Added a class of h-100 to div
+when pressing Signup nav item it was asking the user if they were sure they wanted to signout|The signin.html page was the same as the signout.html page. Changed the signin.html to be the correct version by copying and pasting the code for this page from GitHub
+URL of add\_recipe page not being found|I’d only put the URL path as add\_recipe. Added blog/ in front of the URL path in urls.py
+getting the error message django.db.utils.DataError: value too long for type character varying(50) when trying to make migrations after changing slugfield to autoslugfield|This was due to an existing recipe having a longer slug than the default length. Added a max\_length=255 to autoslugfield and deleted the recipe that was causing the issue
+success message wasn’t showing|"Followed the Django docs and added this code to the base.html page:
+
+## Unresolved Bugs
+
+- The slugfield isn't automatically updating in the admin panel - this shouldn't be an issue in deployment as CRUD functionality can all be done through the website. However, it would be something I would have researched more if I'd had more time
+- Users can enter one block of text, into the ingredients and method fields, of the create / edit recipe form. I couldn’t think of a way to validate this but, would again would be something to research further if I had more time
+- The view recipe button is still showing as a yellow border when clicked and held. I’ve added more css which has made it better (it was showing as background colour yellow too before) and not completely resolved it. 
