@@ -571,12 +571,44 @@ Please refer to the testing information in the seperate [testing.md](/testing.md
 **Bug**|**Resolution**
 :-----:|:-----:
 Category was showing as a number, rather than text, in index.html|Changed recipe.category to recipe.get\_category\_display (used Stack Overflow)
-when putting margins on the recipe cards one recipe in the row was wrapping to the next line|Reconstructed the Django grid – needed extra divs to prevent this
-each card in the index.html was a different height|Added a class of h-100 to div
-when pressing Signup nav item it was asking the user if they were sure they wanted to signout|The signin.html page was the same as the signout.html page. Changed the signin.html to be the correct version by copying and pasting the code for this page from GitHub
+When putting margins on the recipe cards one recipe in the row was wrapping to the next line|Reconstructed the Django grid – needed extra divs to prevent this
+Each card in the index.html was a different height|Added a class of h-100 to div
+When pressing Signup nav item it was asking the user if they were sure they wanted to signout|The signin.html page was the same as the signout.html page. Changed the signin.html to be the correct version by copying and pasting the code for this page from GitHub
 URL of add\_recipe page not being found|I’d only put the URL path as add\_recipe. Added blog/ in front of the URL path in urls.py
-getting the error message django.db.utils.DataError: value too long for type character varying(50) when trying to make migrations after changing slugfield to autoslugfield|This was due to an existing recipe having a longer slug than the default length. Added a max\_length=255 to autoslugfield and deleted the recipe that was causing the issue
-success message wasn’t showing|"Followed the Django docs and added this code to the base.html page:
+Getting the error message django.db.utils.DataError: value too long for type character varying(50) when trying to make migrations after changing slugfield to autoslugfield|This was due to an existing recipe having a longer slug than the default length. Added a max\_length=255 to autoslugfield and deleted the recipe that was causing the issue
+Success message wasn’t showing|Followed the Django docs and added this code to the base.html page: {% if messages %} <ul class="messages"> {% for message in messages %} <li{% if message.tags %} class="{{ message.tags }}" {% endif %}> {% if message.level == SUCCESS %}Important: {% endif %} {{ message }} </li> {% endfor %} </ul>
+Default images were not loading and it was showing a website for cloudinary|Unknown fix – it fixed itself on refresh!
+Success message wasn’t showing after recipe created|Added message.success to the form\_valid function
+The homepage was displaying recipes that were not yet approved|Added filter(approved=True) to the get\_queryset function
+Changes I’d made to the static/CSS/style.css file weren’t being deployed|Ran the collectstatic command to update the staticfile with these changes. I realised afterwards it was because I had still got my Debug set to False
+Edited recipe was showing as approved after being submitted|Added form.instance.approved = False to the class view
+The user wasn’t being shown a success message when a recipe had been deleted|Added a def form\_valid() which contained the success message (used the Django 4.0 release notes)
+When adding bootstrap classes the hero image wasn’t covering to the right edge of the page|Removed width=100% from CSS
+My comment form wasn’t showing in the recipe\_detail.html webpage|I contacted student support who sent me a link, to Code Institute solutions GitHub repository, and suggested I look at putting in a def get() and a def post() in my DetailView. This is the webpage I used: https://github.com/Code-Institute-Solutions/Django3blog/blob/master/12\_final\_deployment/blog/views.py
+The comment form wasn’t clearing when the user had left a comment so, the comment they had submitted was still showing|Added comment\_form = CommentForm() to the if statement, in the post function, to clear the form
+When submitting the comment form was getting an error local variable ‘comment’ referenced before assignment|Set comment = None before the if statement
+When adding a comment or rating, in the recipe\_detail view, whichever form was not submitted had a red border and an error message|Added  rating\_form = RatingForm() to the end of the if statement for posting the comment\_form and comment\_form = CommentForm() to the end of the if statement for posting the rating form
+Comments were being duplicated when they were submitted and the website was refreshed|Added return HttpResponseRedirect(request.path\_info) to the end of the if statement
+My average\_number variable, which shows the average rating for the recipe, wasn’t showing in the page, although was correct in the HTML|I contacted Student Support and they found the error – I’d spelt average as avergae!!
+The placeholder, in the ratings form, was not responsive and could all be read on screens smaller than 435px|Added a form-control class to the input field and used a media query to reduce the font size on screens below this size
+On the recipe\_detail page the ingredients and method was a block of text rather than broken down to different lines|Added | linebreaks 
+A long comment was overflowing over the edge of the page|Added word-wrap: break-word as a CSS style
+I was getting an error page 403 forbidden when pressing the button to delete a comment|Added {% csrf\_token %} to the delete-modal form
+When pressing the delete comment button, the comment wasn’t deleting and I was getting the error message from my edit\_comment view|I had put the name of the path, in urls.py as views.edit\_comment so I changed this to views.delete\_comment
+There were several horizontal rules below the comment section|This is because my for loop was including all comments, including ones that weren’t displayed, due to not having been written by that user and not approved. I added an if statement, within the for loop, to only iterate over comments that were approved or written by the user
+The ingredients and method fields, in the form to create a recipe, had changed to be a single line when it needed to be a multiline|When I’d used widgets, to add a placeholder, I’d put widget=forms.TextInput, which only renders a single line. Changed this to  widget=forms.Textarea which is multiline
+The error ‘Uncaught TypeError: Cannot read property of undefined’ was showing, in the console, for javascript functions that weren’t being run on that page|I added if statement to all the functions so that they would only run when the page they corresponded to was loaded
+Having a button on my delete recipes page, that was supposed to cancel the deletion, was still deleting the recipe|Changed the button to an <a> tag
+The footer wasn’t at the bottom of the page on those pages with low content|I used a calculation that removed the height of the navbar and footer form 100vh. This was following advice in this forum https://theme.co/forum/t/footer-content-overlapping-with-main-content/73859/5
+In the edit recipe view they was a div saying ‘current image’ but this was empty|I went through Student support and realised that I would have to overwrite the crispy form. I did this and then restyled the forms
+There was a number showing after the date of the edited comment|In my recipe detail page, {{ comment id }} was showing after the editedon 
+In the my recipes page the text of the unauthorised recipes was showing as dark grey and it should be pink|There was another class overwriting the faded class as, the faded class was close to the top of the style.css page. Moved this class towards the bottom
+The user could leave a blank name for the recipe|Added blank=False to the recipe\_name field in the models.py tab
+In the receipe detail, for recipe with 1.5 star rating, one star wasn't showing and two were showing as squares|There were two missing apotrophies, in the class names, in JavaScript
+An unauthenticated could enter a comment but this then caused a 500 error|Added an if statement to check is the user was authenticated before displaying the comment input
+Two recipes with the same name but different capitalisation can be created. This meant two of the same slugs being created and 500 errors when the duplicated slug recipe was clicked on|Added slug=unique to model
+When submitting a comment less than 3 characters the form wasn't submitting but the user wasn't getting a message to say why|I could have added a form\_invalid function but, I chose to remove this validator - it's possible a user may only want to leave a 1 character comment, such as ?, or a number, in reply to another comment
+The form wasn't submitting when a nuber enetered below 1 for servings however, the user wasn't getting a meesage to say why|Added a form\_invalid function, to the createView and updateView classes
 
 ## Unresolved Bugs
 
