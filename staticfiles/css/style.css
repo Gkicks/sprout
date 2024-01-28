@@ -153,7 +153,7 @@ footer h2 {
     background-color: #145222;
 }
 
-.btn-outline-warning:hover {
+.btn-outline-warning:hover, .btn-outline-warning:focus {
     background-color: #9F2B68;
     border-color: #9F2B68;
     color: #ffffff
@@ -274,6 +274,10 @@ hr:last-child {
 /* allauth */
 #sign-in {
     padding-top: 2rem;    
+}
+
+#signin-button {
+    margin-bottom: 1rem;
 }
 
 .link {
