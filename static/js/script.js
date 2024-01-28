@@ -34,8 +34,8 @@ const confirmDeleteBtns = document.getElementById("confirm-delete-btns");
 
 
 // forms
-const commentFormWrapper = document.getElementById("div_id_body")
-const ratingFormWrapper = document.getElementById("div_id_rating")
+const commentFormWrapper = document.getElementById("div_id_body");
+const ratingFormWrapper = document.getElementById("div_id_rating");
 
 
 // index.html page
@@ -189,21 +189,21 @@ if (confirmDelete) {
 // to add a label to the comment form and give it a class of sr-only
 if(commentFormWrapper) {
     document.addEventListener("DOMContentLoaded", function() {
-        let commentLabel = document.createElement('label')
+        let commentLabel = document.createElement('label');
         commentFormWrapper.insertBefore(commentLabel, commentFormWrapper.firstChild);
-        commentLabel.htmlFor = ('id_body')
-        commentLabel.classList.add('sr-only')
-        commentLabel.innerText = 'Comment'
-    })
+        commentLabel.htmlFor = ('id_body');
+        commentLabel.classList.add('sr-only');
+        commentLabel.innerText = 'Comment';
+    });
 }
 
 // to add a label to the comment form and give it a class of sr-only
 if(ratingFormWrapper) {
     document.addEventListener("DOMContentLoaded", function() {
-        let ratingLabel = document.createElement('label')
+        let ratingLabel = document.createElement('label');
         ratingFormWrapper.insertBefore(ratingLabel, ratingFormWrapper.firstChild);
-        ratingLabel.htmlFor = ('id_rating')
-        ratingLabel.classList.add('sr-only')
-        ratingLabel.innerText = 'Rating'
-    })
+        ratingLabel.htmlFor = ('id_rating');
+        ratingLabel.classList.add('sr-only');
+        ratingLabel.innerText = 'Rating';
+    });
 }
