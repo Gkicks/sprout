@@ -10,12 +10,11 @@ Visit the deployed site here: [Sprout](https://sprout-p4-ffedffefc60e.herokuapp.
 
 - [Sprout](#sprout)
 - [Contents](#contents)
-- [User Experience (UX)](#user-experience-(ux))
+- [User Experience (UX)](#user-experience-ux)
   - [Initial Discussion](#initial-discussion)
-    - [Key Information for the Site](#key-information-for-the-site)
   - [Agile Planning](#agile-planning)
     - [Epics](#epics)
-    - [User Stories](#user-stroies)
+    - [User Stories](#user-stories)
 - [Design](#design)
   - [Colour Scheme](#colour-scheme)
   - [Typography](#typography)
@@ -71,10 +70,9 @@ Visit the deployed site here: [Sprout](https://sprout-p4-ffedffefc60e.herokuapp.
 
 ## Initial Discussion
 
-Initial Discussion
 Sprout is a recipe sharing website which allows users to post recipes, rate recipes and leave comments on the recipe.
 
-The site is designed to be intuitive and provide a enjoyable user experience. 
+The site is designed to be intuitive and provide a enjoyable user experience.
 
 Security is an important part of the site – ensuring user data is kept secure and, unauthorised users aren’t able to access or change parts of the site if they are not authorised to do so.
 
@@ -88,7 +86,7 @@ Priorities – Tasks were labelled must-have, should-have or nice-to-have. The m
 
 Estimates – These were assigned on the expected complexity of a task and how long I expected it to take to complete. The simplest tasks in the project were assigned an estimate of 1 and, the task I thought was most complex was assigned an estimate of 8. The estimates are shown in the light grey label on the project board. In total there were 101 estimates. 40 of these were must-haves (39.5%), 22 were should-haves (22%) and 39 were nice-to-haves (38.5%)
 
-All cards on the project board can be opened to see the full critea that needs to be met in order to close the task. The full project board can be found here: [Project Board](#https://github.com/users/Gkicks/projects/6/views/1)
+All cards on the project board can be opened to see the full critea that needs to be met in order to close the task. The full project board can be found here: [Project Board](#<https://github.com/users/Gkicks/projects/6/views/1)>
 
 ![Project Board](static/images/project-board.png)
 
@@ -109,14 +107,14 @@ Creating the structure of the website and the individual pages that make up this
 Functionality to create, view, edit and delete a recipe
 
 #### Epic 4 – Comments
- 
+
 Functionality to create, view, edit and delete comments relating to a specific recipe
 
 #### Epic 5 – Authentication
 
 Allows the user to register an account, login, logout and delete an account
 
-#### Epic 6 – Deployment 
+#### Epic 6 – Deployment
 
 The website to be deployed to Heroku
 
@@ -130,21 +128,21 @@ Each Epic was further broken down into User Stories:
 
 #### Epic 1 – Initial Setup
 
-•	As a developer I need to create a PostgresSQL instance, using ElephantSQL, so I can set up models – estimate 1 – must-have
-•	As a developer I need to set up the developing environment so that I can implement the necessary features – estimate 1 – must-have
-•	As a developer I need to create a superuser so I can have admin access to the database – estimate 1 – must have
-•	As a developer I need to create static resources to contain my css and js files and images – estimate 1 - must have
+• As a developer I need to create a PostgresSQL instance, using ElephantSQL, so I can set up models – estimate 1 – must-have
+• As a developer I need to set up the developing environment so that I can implement the necessary features – estimate 1 – must-have
+• As a developer I need to create a superuser so I can have admin access to the database – estimate 1 – must have
+• As a developer I need to create static resources to contain my css and js files and images – estimate 1 - must have
 
 #### Epic 2 – Create Pages
 
-•	As a developer I need to create the base.html page to give the structure that other page layouts are b estimate ased on – estimate 2 – must have
-•	As a developer I need to create a navbar so that the user can navigate throughout the site – 2 – must have
-•	As a developer I need to create a footer so that the user can link to the social media accounts - estimate 2 – must have
-•	As a developer I need to create a home / landing page where the user can easily see the recipe posts – estimate 3 – must have
-•	As a user I want to see a list of my current recipes so I can see the recipes I've published and choose which to edit or delete – estimate 5 – must have
-•	As a developer I want to create a 404 error page so that users are alerted if they have accessed a page that doesn’t exist – estimate 2 – should have
-•	As a developer I want to create a 403 error page so that users are alerted if they have accessed a page they don't have permission to view – estimate 2 – should have 
-•	As a developer I want to create a 500 error page so that users are alerted if an internal error occurs – estimate 2 – should have
+• As a developer I need to create the base.html page to give the structure that other page layouts are b estimate ased on – estimate 2 – must have
+• As a developer I need to create a navbar so that the user can navigate throughout the site – 2 – must have
+• As a developer I need to create a footer so that the user can link to the social media accounts - estimate 2 – must have
+• As a developer I need to create a home / landing page where the user can easily see the recipe posts – estimate 3 – must have
+• As a user I want to see a list of my current recipes so I can see the recipes I've published and choose which to edit or delete – estimate 5 – must have
+• As a developer I want to create a 404 error page so that users are alerted if they have accessed a page that doesn’t exist – estimate 2 – should have
+• As a developer I want to create a 403 error page so that users are alerted if they have accessed a page they don't have permission to view – estimate 2 – should have
+• As a developer I want to create a 500 error page so that users are alerted if an internal error occurs – estimate 2 – should have
 
 #### Epic 3 – Recipes
 
@@ -158,7 +156,7 @@ Each Epic was further broken down into User Stories:
 - As a user I am able to rate a recipe to inform others how much I liked the recipe – estimate 5 – nice to have
 
 #### Epic 4 – Comments
- 
+
 - As a user I want to comment on a recipe so I can give feedback to the author and share my views with other users – estimate 3 – should have
 - As a user I want to view comments that all users have left so that I can see feedback on a recipe – estimate 2 – should have
 - As a user I want to edit a comment so I can correct any errors or make updates – estimate 3 – should have
@@ -171,7 +169,7 @@ Each Epic was further broken down into User Stories:
 - As a site owner I want the allauth forms to be customised so they fit in with the style of the rest of the site – estimate 5 – should have
 - As a user I want to delete my account so it no longer exists – estimate 3 – should have
 
-#### Epic 6 – Deployment 
+#### Epic 6 – Deployment
 
 - As a developer I need to deploy the project, to Heroku, so that customers are able to access the website – estimate 1 – must-have
 
