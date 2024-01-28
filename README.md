@@ -208,7 +208,7 @@ I then changed these for the yellow button to become purple (I could not find a 
 
 I used FontJoy to pick the fonts used throughout the website. The fonts used are Arimo and Kanit. I was originally planning to use Poly too but decided this wasn’t necessary and having two fonts was enough 
 
-![Fontjoy](static/images/fonyjoy.png)
+![Fontjoy](static/images/fontjoy.png)
 
 ## Imagery
 
@@ -228,7 +228,7 @@ The favicon image I chose to use was of a sprout, as this matches the name of th
 
 Recipe Images were found on Upsplash and Pixabay
 
-![Recipe Images](static/images/favicon.png)
+![Recipe Images](static/images/recipe-images.png)
 
 ## Wireframes
 
