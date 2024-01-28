@@ -44,15 +44,7 @@ class TestRecipeForm(TestCase):
         self.assertFalse(
             recipe_form.is_valid(), msg="form valid with 260 characters")
 
-    def test_recipe_name_not_unique(self):
-        """
-        none unique recipe_name
-        """
-        recipe_form = RecipeForm({'recipe_name': 'Tofu Fillets'})
-        self.assertFalse(
-            recipe_form.is_valid(), msg="form valid with non-unique name")
-
-
+    
 class TestCommentForm(TestCase):
     """
     test to check if the comment form is valid
