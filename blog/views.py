@@ -164,6 +164,13 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
 
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        messages.error(
+            self.request, 
+            'Error submitting recipe. Please make sure you have entered more than 1 serving'
+        )
+
+        return super().form_invalid(form)
 
 def user_recipes(request):
     """
@@ -214,6 +221,14 @@ class EditRecipe(UserPassesTestMixin, UpdateView):
             'Recipe updated and awaiting approval')
 
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(
+            self.request, 
+            'Error submitting recipe. Please make sure you have entered more than 1 serving'
+        )
+
+        return super().form_invalid(form)
 
 
 class DeleteRecipe(UserPassesTestMixin, DeleteView):
