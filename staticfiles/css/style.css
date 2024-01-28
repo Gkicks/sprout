@@ -293,6 +293,10 @@ hr:last-child {
     padding-top: 2rem;
 }
 
+#id_password {
+    margin-top: 1rem;
+}
+
 
 /* for text where recipe is not authorised */
 .faded {
