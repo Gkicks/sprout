@@ -166,11 +166,13 @@ class CreateRecipe(LoginRequiredMixin, CreateView):
 
     def form_invalid(self, form):
         messages.error(
-            self.request, 
-            'Error submitting recipe. Please make sure you have entered more than 1 serving'
+            self.request,
+            'Error submitting recipe.'
+            'Please make sure you have entered more than 1 serving'
         )
 
         return super().form_invalid(form)
+
 
 def user_recipes(request):
     """
@@ -224,8 +226,9 @@ class EditRecipe(UserPassesTestMixin, UpdateView):
 
     def form_invalid(self, form):
         messages.error(
-            self.request, 
-            'Error submitting recipe. Please make sure you have entered more than 1 serving'
+            self.request,
+            'Error submitting recipe.'
+            'Please make sure you have entered more than 1 serving'
         )
 
         return super().form_invalid(form)
