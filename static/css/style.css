@@ -289,6 +289,10 @@ hr:last-child {
     color: var(--brown);
 }
 
+#signup-container {
+    padding-top: 2rem;
+}
+
 
 /* for text where recipe is not authorised */
 .faded {
