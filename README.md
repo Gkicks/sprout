@@ -81,6 +81,12 @@ Visit the deployed site here: [Sprout](https://sprout-p4-ffedffefc60e.herokuapp.
 - [Bugs](#bugs)
   - [Resolved Bugs](#resolved-bugs)
   - [Unresolved Bugs](#unresolved-bugs)
+- [Credits](#credits)
+  - [Code Used](#code-used)
+  - [Content](#content)
+  - [Media](#media)
+  - [Other](#other)
+  - [Acknowledgements](#acknowledgements)
 
 [Back to top](#sprout)
 
@@ -487,6 +493,8 @@ I used Lucid Chart to create my database schema
 
 ![Wave 404 403 500](static/images/wave-logout.png)
 
+[Back to top](#sprout)
+
 # Technologies Used
 
 ## Languages Used
@@ -548,9 +556,13 @@ This site is deployed using Heroku and following these steps:
 - When you are in your chosen directory type “git clone” followed by pasting in the URL you copied in GitHub
 - Press enter to execute the command and your clone will be created
 
+[Back to top](#sprout)
+
 # Testing
 
 Please refer to the testing information in the seperate [testing.md](/testing.md) file
+
+[Back to top](#sprout)
 
 # Bugs
 
@@ -571,3 +583,55 @@ success message wasn’t showing|"Followed the Django docs and added this code t
 - The slugfield isn't automatically updating in the admin panel - this shouldn't be an issue in deployment as CRUD functionality can all be done through the website. However, it would be something I would have researched more if I'd had more time
 - Users can enter one block of text, into the ingredients and method fields, of the create / edit recipe form. I couldn’t think of a way to validate this but, would again would be something to research further if I had more time
 - The view recipe button is still showing as a yellow border when clicked and held. I’ve added more css which has made it better (it was showing as background colour yellow too before) and not completely resolved it. 
+
+[Back to top](#sprout)
+
+# Credits
+
+## Code Used
+
+For my EditComment function I heavily relied on the lesson from Code Institute’s ‘I Think Therefore I Blog walkthrough
+
+## Content
+
+All content was written by Gail Kicks
+
+## Media
+
+All photos were taken from the websites pixabay.com and upsplash.com
+
+The recipes used were from:
+
+- Chickpea Flour Pizza - https://www.forksoverknives.com/
+- Pancakes - https://www.peta.org.uk/
+- Pina Colada - https://lovingitvegan.com/
+- Roasted Cauliflower with Garlic, Lemon and Parsley - https://www.feastingathome.com/
+- Smoky Tender Aubergine - https://www.jamieoliver.com/
+- Tahini Date Smoothie - https://www.vegkit.com/
+- Tofu Fillets - https://itdoesnttastelikechicken.com/
+- Vegan Christmas Pudding - https://www.bbcgoodfood.com/
+- Vegan Fish Sticks - https://www.vegkit.com/
+- Vegan Parmesan Dressing - https://monkeyandmekitchenadventures.com/
+
+## Other
+
+I used the following resources to learn and debug
+
+- The Code Institute lessons, including the ‘I Think Therefore I Blog’ walkthrough
+- The Ultimate 2023 Fullstack Web Developer Bootcamp on Udemy
+- stackoverflow.com
+- Code Institute’s Slack community
+- Codeacademy forum
+- Django Documentation
+- Getbootstrap.com
+- MDN Web Docs
+- geeksforgeeks.org
+- youtube.com
+
+## Acknowledgements
+
+- My mentor, Graeme Taylor, for his advice and guidance
+- The Code Institute Slack community
+The Code Institute tutors – especially Joanne, Jason, Rebecca and Sarah 
+
+[Back to top](#sprout)
