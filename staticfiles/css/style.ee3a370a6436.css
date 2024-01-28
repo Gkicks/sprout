@@ -52,7 +52,6 @@ body {
     border-color: #9F2B68;
     color: #FFFFFF;
     outline-color: #9F2B68;
-    box-shadow: #9F2B68;
 }
 
 .low-content-page {
@@ -87,7 +86,7 @@ footer h2 {
 
 /* landing page image*/
 .hero-image {
-    background-image: url("../images/hero-image.webp");
+    background-image: url("../images/hero-image.637aa1941f50.webp");
     background-size: cover;
     height: 60vh;
     background-repeat: no-repeat;

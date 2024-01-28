@@ -39,22 +39,6 @@ body {
     border-color: #240032;
 }
 
-.btn-outline-warning:hover, 
-.btn-outline-warning:active, 
-.btn-outline-warning:focus,
-.btn-outline-warning:disabled,
-.btn-outline-warning:not(:disabled):not(.disabled).active, 
-.btn-outline-warning:not(:disabled):not(.disabled):active, 
-.open > .btn-outline-warning.dropdown-toggle,
-.btn-outline-warning:active:hover,
-.show > .btn-outline-warning.dropdown-toggle {
-    background-color: #9F2B68;
-    border-color: #9F2B68;
-    color: #FFFFFF;
-    outline-color: #9F2B68;
-    box-shadow: #9F2B68;
-}
-
 .low-content-page {
     min-height: calc(100vh - 274px);
     padding-top: 4rem;
@@ -87,7 +71,7 @@ footer h2 {
 
 /* landing page image*/
 .hero-image {
-    background-image: url("../images/hero-image.webp");
+    background-image: url("../images/hero-image.637aa1941f50.webp");
     background-size: cover;
     height: 60vh;
     background-repeat: no-repeat;
@@ -170,7 +154,19 @@ footer h2 {
     background-color: #145222;
 }
 
-.btn-outline-warning:hover, .btn-outline-warning:focus, .btn-outline-warning:active {
+.btn-outline-warning:hover {
+    background-color: #9F2B68;
+    border-color: #9F2B68;
+    color: #ffffff
+}
+
+.btn-outline-warning:focus {
+    background-color: #9F2B68;
+    border-color: #9F2B68;
+    color: #ffffff
+}
+
+.btn-outline-warning:active {
     background-color: #9F2B68;
     border-color: #9F2B68;
     color: #ffffff

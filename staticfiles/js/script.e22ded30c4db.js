@@ -207,3 +207,9 @@ if(ratingFormWrapper) {
         ratingLabel.innerText = 'Rating';
     });
 }
+
+const viewButton = document.getElementsByClassName('btn-outline-warning')
+document.addEventListener('click', function() {
+    viewButton.style.backgroundColor = '#9F2B68';
+    viewButton.style.borderColor = '#9F2B68';
+})
