@@ -508,7 +508,7 @@ I used Lucid Chart to create my database schema
 
 ## Languages Used
 
-HTML, CSS, JavaScipt, Django and Bootstrap were used to create this website
+HTML, CSS, JavaScipt, Python+Django and Bootstrap were used to create this website
 
 ## Frameworks, Libraries and Programs Used
 
