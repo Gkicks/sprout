@@ -673,6 +673,6 @@ I used the following resources to learn and debug
 
 - My mentor, Graeme Taylor, for his advice and guidance
 - The Code Institute Slack community
-The Code Institute tutors – especially Joanne, Jason, Rebecca and Sarah 
+- The Code Institute tutors – especially Joanne, Jason, Rebecca and Sarah
 
 [Back to top](#sprout)
