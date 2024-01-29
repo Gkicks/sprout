@@ -56,6 +56,7 @@ Visit the deployed site here: [Sprout](https://sprout-p4-ffedffefc60e.herokuapp.
       - [Log In](#log-in)
       - [Sign Up](#sign-up)
       - [Log Out](#log-out)
+      - [messages](#messages)
       - [404.html / 403.html / 500.html](#404html--403html--500html)
   - [Future Implementations](#future-implementations)
   - [Accessibility](#accessibility)
@@ -400,6 +401,12 @@ I used Lucid Chart to create my database schema
 - If the choose ‘go to the home page’ they will not be logged and and redirected to the home page
 
 ![Log Out](static/images/log-out.png)
+
+#### messages
+
+- There are several messages in the view classes that will inform the user if an action has been sucessful or not
+
+![Messages](static/images/messages.png)
 
 #### 404.html / 403.html / 500.html
 
