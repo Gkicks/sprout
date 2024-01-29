@@ -355,10 +355,12 @@ I used Lucid Chart to create my database schema
   - Method – User is instructed to leave a blank line between each method, so that this is how it will be displayed. The user can enter the text anyway though – it will shown but won’t look as good
   - Comment Form – A form for the user to leave a comment. There is a hidden label as, the label was unnecessary to be shown on screen (the placeholder gives the instruction) but, the label is still needed for screen readers. If the iser is not logged in this form won't desplay and they'll be a comment that they need to sign in to leave a comment
   - Comments – The list of comments will display with a horizontal rule between each. All approved comments will be displayed. If the authenticated user it the one who left the comment but, it’s not approved, they will see this hear but shown it’s awaiting approval. If the comment is not approved and, it wasn’t written by the authenticated user, then it won’t show. The comment shows the date that the comment was written and, if the comment has been edited it will also show this
-  - Edit Button – will take the user up to the form to edit their comment. This will be prepopulated with their current comment
+  - Edit Button – will take the user up to the form to edit their comment. This will be prepopulated with their current comment. Tee input box will get wider and have a dark green border. This is to draw the user's eye to this area
   - Delete Button – shows a modal asking the user if they’re sure they want to delete their comment. If they pick ‘delete’ the comment will be deleted and if ‘cancel’ if won’t be. Either way they’ll be redirected back to the recipe detail page
 
 ![Recipe Detail](static/images/recipe-detail.png)
+
+![Delete Modal](static/images/delete-modal.png)
 
 #### Edit Recipe
 
