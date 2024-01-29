@@ -259,7 +259,7 @@ I ran all code through Lighthouse in Chrome Developer Tools. There were some con
 
 ### User Recipes
   
-![Lighthouse User Recipes](static/images/user-recipes.png)
+![Lighthouse User Recipes](static/images/lighthouse-user-recipes.png)
 
 ### Create Recipe
 
