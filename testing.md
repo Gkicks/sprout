@@ -74,7 +74,7 @@ This was relating to the tagline that shows over the hero image. I did consider 
 
 - create_recipe.html
 
-![WC3 Create Recipe](static/images/create-recipe.png)
+![WC3 Create Recipe](static/images/wc3-create-recipe.png)
 
 This warning is because the tag is empty. This is filled, using JavaScript, depending on if a create_recipe ot edit_recipe form is called. Therefor, it won't be an empty tag
 
