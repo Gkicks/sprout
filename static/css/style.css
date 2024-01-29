@@ -318,6 +318,10 @@ hr:last-child {
     margin-top: 1rem;
 }
 
+#id_username, #id_password2 {
+    margin-bottom: 1rem;
+}
+
 
 /* for text where recipe is not authorised */
 .faded {
@@ -330,7 +334,7 @@ hr:last-child {
 /* media queries */
 @media (max-width: 992px) {
     .low-content-page {
-        height: calc(100vh - 197.5px);
+        min-height: calc(100vh - 197.5px);
         padding-top: 4rem;
     }    
 }
